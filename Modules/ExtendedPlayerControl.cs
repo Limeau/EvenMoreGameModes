@@ -11,7 +11,7 @@ using System;
 
 using Object = UnityEngine.Object;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     static class ExtendedPlayerControl
     {
@@ -1100,7 +1100,7 @@ namespace MoreGamemodes
             if (Options.EnableMidGameChat.GetBool())
                 player.SetChatVisible(true);
         }
-        
+
         public static bool CanGuessInGuesserMode(this PlayerControl player)
         {
             if (CustomGamemode.Instance.Gamemode != Gamemodes.Classic || !Options.EnableGuesserMode.GetBool()) return false;

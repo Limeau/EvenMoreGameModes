@@ -2,7 +2,7 @@ using Hazel;
 using AmongUs.GameOptions;
 using UnityEngine;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Romantic : CustomRole
     {

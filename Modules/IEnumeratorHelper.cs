@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using BepInEx.Unity.IL2CPP.Utils.Collections;
 using Il2CppInterop.Runtime;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     // https://github.com/tukasa0001/TownOfHost/blob/main/Helpers/IEnumeratorHelper.cs
     public class CoroutinPatcher

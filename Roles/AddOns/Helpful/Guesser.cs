@@ -7,13 +7,13 @@ using Hazel;
 
 using Object = UnityEngine.Object;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Guesser : AddOn
     {
         public override bool CanGuess(PlayerControl target, CustomRoles role)
         {
-            if (Player.GetRole().IsImpostor() && target.GetRole().IsImpostor()) return false; 
+            if (Player.GetRole().IsImpostor() && target.GetRole().IsImpostor()) return false;
             if (role == CustomRoles.Crewmate && !CanGuessCrewmateRole.GetBool()) return false;
             return (CustomRolesHelper.IsCrewmate(role) && !Player.GetRole().IsCrewmate()) || (CustomRolesHelper.IsImpostor(role) && !Player.GetRole().IsImpostor()) ||
                 (CustomRolesHelper.IsNeutralKilling(role) && CanGuessNeutralKilling.GetBool()) || (CustomRolesHelper.IsNeutralEvil(role) && CanGuessNeutralEvil.GetBool()) ||
@@ -26,7 +26,7 @@ namespace MoreGamemodes
             if (Player.GetRole().IsImpostor() && AddOnsHelper.IsImpostorOnly(addOn)) return false;
             return CanGuessAddOns.GetBool();
         }
-        
+
         // https://github.com/EnhancedNetwork/TownofHost-Enhanced/blob/main/Modules/GuessManager.cs#L638
         public static void CreateGuessButtons(MeetingHud __instance, bool canGuessNB, bool canGuessNE, bool canGuessNK, bool canGuessAddOns, bool canGuessCrewmate)
         {
@@ -34,17 +34,17 @@ namespace MoreGamemodes
             {
                 if (pva.transform.FindChild("GuessButton") != null)
                     Object.Destroy(pva.transform.FindChild("GuessButton").gameObject);
-                var player = GameData.Instance.GetPlayerById(pva.TargetPlayerId);
+                var player = GameData.Instance.GetPlayerById(pva.PlayerId);
                 if (player.IsDead || player.Disconnected || player.ClientId == AmongUsClient.Instance.ClientId || (player.GetRole().IsImpostor() && PlayerControl.LocalPlayer.GetRole().IsImpostor()) || PlayerControl.LocalPlayer.Data.IsDead || !player.GetRole().CanGetGuessed(PlayerControl.LocalPlayer, null)) continue;
                 GameObject template = pva.Buttons.transform.Find("CancelButton").gameObject;
                 GameObject targetBox = Object.Instantiate(template, pva.transform);
                 targetBox.name = "GuessButton";
                 targetBox.transform.localPosition = pva.transform.FindChild("MeetingButton") != null ? new Vector3(-0.35f, 0.03f, -1.31f) : new Vector3(-0.95f, 0.03f, -1.31f);
                 SpriteRenderer renderer = targetBox.GetComponent<SpriteRenderer>();
-                renderer.sprite = Utils.LoadSprite("MoreGamemodes.Resources.GuessIcon.png", 115f);
+                renderer.sprite = Utils.LoadSprite("EvenMoreGameModes.Resources.GuessIcon.png", 115f);
                 PassiveButton button = targetBox.GetComponent<PassiveButton>();
                 button.OnClick.RemoveAllListeners();
-                button.OnClick.AddListener((Action)(() => GuessButtonOnClick(pva.TargetPlayerId, __instance, canGuessNB, canGuessNE, canGuessNK, canGuessAddOns, canGuessCrewmate)));
+                button.OnClick.AddListener((Action)(() => GuessButtonOnClick(pva.PlayerId, __instance, canGuessNB, canGuessNE, canGuessNK, canGuessAddOns, canGuessCrewmate)));
             }
         }
 
@@ -117,7 +117,7 @@ namespace MoreGamemodes
                 if (!PlayerControl.LocalPlayer.GetRole().IsImpostor())
                     tabs.Add((13, "Impostor add ons", Color.yellow));
             }
-            
+
             List<UiElement> list = new();
             for (int i = 0; i < tabs.Count; ++i)
             {
@@ -139,7 +139,7 @@ namespace MoreGamemodes
                 shapeshifterPanel.NameText.text = tabs[i].Item2;
                 Object.Destroy(shapeshifterPanel.PlayerIcon.gameObject);
                 shapeshifterPanel.LevelNumberText.text = "<font=\"VCR SDF\"><size=15>■";
-                shapeshifterPanel.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f); 
+                shapeshifterPanel.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f);
                 shapeshifterPanel.NameText.transform.localPosition = Vector3.zero;
 			    shapeshifterPanel.NameText.color = tabs[i].Item3;
 			    minigame.potentialVictims.Add(shapeshifterPanel);
@@ -187,7 +187,7 @@ namespace MoreGamemodes
                     shapeshifterPanel.NameText.text = Utils.RoleToString(role);
                     Object.Destroy(shapeshifterPanel.PlayerIcon.gameObject);
                     shapeshifterPanel.LevelNumberText.text = "<font=\"VCR SDF\"><size=15>■";
-                    shapeshifterPanel.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f); 
+                    shapeshifterPanel.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f);
                     shapeshifterPanel.NameText.transform.localPosition = Vector3.zero;
 			        shapeshifterPanel.NameText.color = role.IsImpostor() ? Palette.ImpostorRed : Palette.CrewmateBlue;
 			        minigame.potentialVictims.Add(shapeshifterPanel);
@@ -201,7 +201,7 @@ namespace MoreGamemodes
                 {
                     CustomRoles roleType = CustomRolesHelper.CommandRoleNames[role];
                     if (CustomRolesHelper.IsVanilla(roleType)) continue;
-                    if ((roleType == CustomRoles.Immortal && !Immortal.CanBeGuessed.GetBool()) || (roleType == CustomRoles.SecurityGuard && !SecurityGuard.CanBeGuessed.GetBool()) || 
+                    if ((roleType == CustomRoles.Immortal && !Immortal.CanBeGuessed.GetBool()) || (roleType == CustomRoles.SecurityGuard && !SecurityGuard.CanBeGuessed.GetBool()) ||
                         (roleType == CustomRoles.Mortician && !Mortician.CanBeGuessed.GetBool()) || (roleType == CustomRoles.Mayor && !Mayor.CanBeGuessed.GetBool())) continue;
                     if (Options.RolesChance[roleType].Id < id * 100000 || Options.RolesChance[roleType].Id >= id * 100000 + 100000) continue;
                     int num = i % 3;
@@ -221,7 +221,7 @@ namespace MoreGamemodes
                     shapeshifterPanel.NameText.text = CustomRolesHelper.RoleNames[roleType];
                     Object.Destroy(shapeshifterPanel.PlayerIcon.gameObject);
                     shapeshifterPanel.LevelNumberText.text = "<font=\"VCR SDF\"><size=15>■";
-                    shapeshifterPanel.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f); 
+                    shapeshifterPanel.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f);
                     shapeshifterPanel.NameText.transform.localPosition = Vector3.zero;
 			        shapeshifterPanel.NameText.color = CustomRolesHelper.RoleColors[roleType];
 			        minigame.potentialVictims.Add(shapeshifterPanel);
@@ -253,7 +253,7 @@ namespace MoreGamemodes
                     shapeshifterPanel.NameText.text = AddOnsHelper.AddOnNames[addOn];
                     Object.Destroy(shapeshifterPanel.PlayerIcon.gameObject);
                     shapeshifterPanel.LevelNumberText.text = "<font=\"VCR SDF\"><size=15>■";
-                    shapeshifterPanel.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f); 
+                    shapeshifterPanel.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f);
                     shapeshifterPanel.NameText.transform.localPosition = Vector3.zero;
 			        shapeshifterPanel.NameText.color = AddOnsHelper.AddOnColors[addOn];
 			        minigame.potentialVictims.Add(shapeshifterPanel);
@@ -278,7 +278,7 @@ namespace MoreGamemodes
             shapeshifterPanel2.NameText.text = "Back";
             Object.Destroy(shapeshifterPanel2.PlayerIcon.gameObject);
             shapeshifterPanel2.LevelNumberText.text = "<font=\"VCR SDF\"><size=15>■";
-            shapeshifterPanel2.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f); 
+            shapeshifterPanel2.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f);
             shapeshifterPanel2.NameText.transform.localPosition = Vector3.zero;
 			shapeshifterPanel2.NameText.color = Color.gray;
 			minigame.potentialVictims.Add(shapeshifterPanel2);

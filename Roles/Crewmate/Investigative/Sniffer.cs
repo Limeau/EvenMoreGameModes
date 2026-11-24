@@ -7,7 +7,7 @@ using System;
 
 using Object = UnityEngine.Object;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Sniffer : CustomRole
     {

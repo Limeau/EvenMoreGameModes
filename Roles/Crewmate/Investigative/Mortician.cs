@@ -1,4 +1,4 @@
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Mortician : CustomRole
     {

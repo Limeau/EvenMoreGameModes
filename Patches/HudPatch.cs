@@ -2,7 +2,7 @@
 using UnityEngine;
 using Il2CppSystem.Collections.Generic;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     class HudManagerPatch

@@ -1,6 +1,6 @@
 using HarmonyLib;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(HauntMenuMinigame), nameof(HauntMenuMinigame.SetFilterText))]
     public static class HauntMenuMinigameSetFilterTextPatch

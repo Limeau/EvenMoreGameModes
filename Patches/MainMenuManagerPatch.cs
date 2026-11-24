@@ -5,7 +5,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 // https://github.com/tukasa0001/TownOfHost/blob/main/Patches/MainMenuManagerPatch.cs
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(MainMenuManager))]
     public class MainMenuManagerPatch
@@ -25,7 +25,7 @@ namespace MoreGamemodes
             logoTransform.parent = rightpanel;
             logoTransform.localPosition = new(0f, 0.15f, 1f);
             logoTransform.localScale *= 1.2f;
-            MGM_Logo.sprite = Utils.LoadSprite("MoreGamemodes.Resources.MoreGamemodes-Logo.png", 400f);
+            MGM_Logo.sprite = Utils.LoadSprite("EvenMoreGameModes.Resources.EvenMoreGameModes-Logo.png", 400f);
         }
 
         [HarmonyPatch(nameof(MainMenuManager.Start)), HarmonyPostfix, HarmonyPriority(Priority.Normal)]
@@ -33,7 +33,7 @@ namespace MoreGamemodes
         {
             if (template == null) template = __instance.quitButton;
             Application.targetFrameRate = Main.UnlockFPS.Value ? 165 : 60;
-            
+
             if (template == null) return;
             if (discordButton == null)
             {
@@ -53,7 +53,7 @@ namespace MoreGamemodes
                     new(1f, -1f, 1f),
                     new(153, 153, 153, byte.MaxValue),
                     new(209, 209, 209, byte.MaxValue),
-                    () => Application.OpenURL("https://github.com/Rabek009/MoreGamemodes"),
+                    () => Application.OpenURL("https://github.com/Rabek009/EvenMoreGameModes"),
                     "GitHub");
             }
 

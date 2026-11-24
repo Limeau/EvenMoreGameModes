@@ -4,7 +4,7 @@ using BepInEx.Configuration;
 using UnityEngine;
 
 // https://github.com/tukasa0001/TownOfHost/blob/main/Modules/OptionItems/OptionItem.cs
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public abstract class OptionItem
     {
@@ -233,7 +233,7 @@ namespace MoreGamemodes
         NeutralRoles,
         AddOns,
     }
-    
+
     public enum OptionFormat
     {
         None,

@@ -5,7 +5,7 @@ using Hazel;
 using System;
 using System.Linq;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class RandomItemsGamemode : CustomGamemode
     {
@@ -214,7 +214,7 @@ namespace MoreGamemodes
                             playerTasks.Add(task.TypeId);
                             if (task.Complete)
                                 completedTasksPlayer.Add(task.Id);
-                        }        
+                        }
                         foreach (var task in target.Data.Tasks)
                         {
                             targetTasks.Add(task.TypeId);
@@ -305,7 +305,7 @@ namespace MoreGamemodes
                                 if (player.Data.Role.IsImpostor)
                                     winners.Add(player.PlayerId);
                             }
-                            CheckEndCriteriaNormalPatch.StartEndGame(GameOverReason.ImpostorsByKill, winners);            
+                            CheckEndCriteriaNormalPatch.StartEndGame(GameOverReason.ImpostorsByKill, winners);
                         }
                         break;
                     case Items.Trap:
@@ -703,7 +703,7 @@ namespace MoreGamemodes
             if (Options.EnableNewsletter.GetBool()) items.Add(Items.Newsletter);
             if (Options.EnableCompass.GetBool()) items.Add(Items.Compass);
             if (Options.EnableBooster.GetBool()) items.Add(Items.Booster);
-            
+
             if (!items.Any()) return Items.None;
             return items[rand.Next(0, items.Count)];
         }

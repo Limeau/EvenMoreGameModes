@@ -3,7 +3,7 @@ using UnityEngine;
 using AmongUs.GameOptions;
 using Hazel;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class BaseWarsGamemode : CustomGamemode
     {
@@ -78,7 +78,7 @@ namespace MoreGamemodes
         {
             if (GetTeam(PlayerControl.LocalPlayer) == BaseWarsTeams.Red)
                 __instance.cosmetics.currentBodySprite.BodySprite.material.SetColor("_OutlineColor", Color.red);
-            else 
+            else
                 __instance.cosmetics.currentBodySprite.BodySprite.material.SetColor("_OutlineColor", Color.blue);
         }
 
@@ -162,7 +162,7 @@ namespace MoreGamemodes
                     pc.RpcSetColor(0);
                     foreach (var ar in PlayerControl.AllPlayerControls)
                         Main.NameColors[(pc.PlayerId, ar.PlayerId)] = Color.red;
-                }   
+                }
                 else
                 {
                     pc.RpcSetColor(1);
@@ -287,7 +287,7 @@ namespace MoreGamemodes
                         PlayerHealth[pc.PlayerId] = Options.StartingHealth.GetFloat() + (Options.HealthIncrease.GetFloat() * GetLevel(pc));
                         SpawnPlayer(pc);
                         pc.SyncPlayerSettings();
-                    }   
+                    }
                     continue;
                 }
                 var room = pc.GetPlainShipRoom();
@@ -492,7 +492,7 @@ namespace MoreGamemodes
                 {
                     AddExp(attacker, Options.ExpForKill.GetInt());
                     ++Main.PlayerKills[attacker.PlayerId];
-                }   
+                }
             }
         }
 

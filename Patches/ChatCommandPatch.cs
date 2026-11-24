@@ -12,7 +12,7 @@ using AmongUs.InnerNet.GameDataMessages;
 
 using Object = UnityEngine.Object;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(ChatController), nameof(ChatController.SendChat))]
     class SendChatPatch
@@ -125,7 +125,7 @@ namespace MoreGamemodes
                     if (Options.FakeShapeshiftAppearance.GetBool()) appearance = Main.StandardNames[Main.AllShapeshifts[PlayerControl.LocalPlayer.PlayerId]];
                     if (CustomGamemode.Instance.Gamemode == Gamemodes.RandomItems)
                     {
-                        if (RandomItemsGamemode.instance.CamouflageTimer > -1f) 
+                        if (RandomItemsGamemode.instance.CamouflageTimer > -1f)
                             appearance = "???";
                     }
                     PlayerControl.LocalPlayer.SendProximityMessage(appearance, message);
@@ -707,7 +707,7 @@ namespace MoreGamemodes
                             break;
                     }
                     GameManager.Instance.RpcSyncCustomOptions();
-                    break;       
+                    break;
                 case "/color":
                 case "/colour":
                     canceled = true;
@@ -784,9 +784,9 @@ namespace MoreGamemodes
                             PlayerControl.LocalPlayer.RpcSetColor(18);
                             break;
                         default:
-                            PlayerControl.LocalPlayer.RpcSetColor(byte.Parse(color));  
+                            PlayerControl.LocalPlayer.RpcSetColor(byte.Parse(color));
                             break;
-                    }        
+                    }
                     break;
                 case "/name":
                     canceled = true;
@@ -1080,14 +1080,14 @@ namespace MoreGamemodes
                     break;
                 case "/stop":
                     canceled = true;
-                    if (!Main.GameStarted || CustomGamemode.Instance.Gamemode != Gamemodes.RandomItems || PlayerControl.LocalPlayer.Data.IsDead || !MeetingHud.Instance || !(MeetingHud.Instance.state is MeetingHud.VoteStates.NotVoted or MeetingHud.VoteStates.Voted))
+                    if (!Main.GameStarted || CustomGamemode.Instance.Gamemode != Gamemodes.RandomItems || PlayerControl.LocalPlayer.Data.IsDead || !MeetingHud.Instance || !(MeetingHud.Instance.state is MeetingHud.MeetingStates.NotVoted or MeetingHud.MeetingStates.Voted))
                     {
                         PlayerControl.LocalPlayer.RpcSendMessage("You can't use /stop now.", "Warning");
                         break;
                     }
                     if (RandomItemsGamemode.instance.GetItem(PlayerControl.LocalPlayer) == Items.Stop)
                     {
-                        MeetingHud.Instance.RpcVotingComplete(new MeetingHud.VoterState[0], null, false);    
+                        MeetingHud.Instance.RpcVotingComplete(new MeetingHud.VoterState[0], null, false, false, byte.MaxValue);
                         RandomItemsGamemode.instance.SendRPC(PlayerControl.LocalPlayer, Items.None);
                         Utils.SendSpam(true);
                     }
@@ -1187,7 +1187,7 @@ namespace MoreGamemodes
                     {
                         int crewmates = 0;
                         int scientists = 0 ;
-                        int engineers = 0;       
+                        int engineers = 0;
                         int impostors = 0;
                         int shapeshifters = 0;
                         int noisemakers = 0;
@@ -1261,8 +1261,8 @@ namespace MoreGamemodes
                         msg += disconnectedPlayers + " players disconnected\n";
                         msg += misfiredPlayers + " misfired on crewmate\n";
                         msg += bombedPlayers + " players got bombed\n";
-                        msg += suicidePlayers + " commited suicide\n";  
-                        msg += trappedPlayers + " players trapped\n";      
+                        msg += suicidePlayers + " commited suicide\n";
+                        msg += trappedPlayers + " players trapped\n";
                         PlayerControl.LocalPlayer.RpcSendMessage(msg, "Newsletter");
                         RandomItemsGamemode.instance.SendRPC(PlayerControl.LocalPlayer, Items.None);
                     }
@@ -1680,7 +1680,7 @@ namespace MoreGamemodes
                     if (Options.FakeShapeshiftAppearance.GetBool()) appearance = Main.StandardNames[Main.AllShapeshifts[player.PlayerId]];
                     if (CustomGamemode.Instance.Gamemode == Gamemodes.RandomItems)
                     {
-                        if (RandomItemsGamemode.instance.CamouflageTimer > -1f) 
+                        if (RandomItemsGamemode.instance.CamouflageTimer > -1f)
                             appearance = "???";
                     }
                     player.SendProximityMessage(appearance, message);
@@ -1773,9 +1773,9 @@ namespace MoreGamemodes
                             break;
                         default:
                             if (byte.Parse(color) < 18 || Options.EnableFortegreen.GetBool() || (Main.GameStarted && CustomGamemode.Instance.Gamemode == Gamemodes.PaintBattle))
-                                player.RpcSetColor(byte.Parse(color));  
+                                player.RpcSetColor(byte.Parse(color));
                             break;
-                    }        
+                    }
                     break;
                 case "/name":
                     canceled = true;
@@ -2078,14 +2078,14 @@ namespace MoreGamemodes
                     break;
                 case "/stop":
                     canceled = true;
-                    if (!Main.GameStarted || CustomGamemode.Instance.Gamemode != Gamemodes.RandomItems || player.Data.IsDead || !MeetingHud.Instance || !(MeetingHud.Instance.state is MeetingHud.VoteStates.NotVoted or MeetingHud.VoteStates.Voted))
+                    if (!Main.GameStarted || CustomGamemode.Instance.Gamemode != Gamemodes.RandomItems || player.Data.IsDead || !MeetingHud.Instance || !(MeetingHud.Instance.state is MeetingHud.MeetingStates.NotVoted or MeetingHud.MeetingStates.Voted))
                     {
                         player.RpcSendMessage("You can't use /stop now.", "Warning");
                         break;
                     }
                     if (RandomItemsGamemode.instance.GetItem(player) == Items.Stop)
                     {
-                        MeetingHud.Instance.RpcVotingComplete(new MeetingHud.VoterState[0], null, false);  
+                        MeetingHud.Instance.RpcVotingComplete(new MeetingHud.VoterState[0], null, false, false, byte.MaxValue);
                         RandomItemsGamemode.instance.SendRPC(player, Items.None);
                         Utils.SendSpam(true);
                     }
@@ -2152,7 +2152,7 @@ namespace MoreGamemodes
                     {
                         int crewmates = 0;
                         int scientists = 0 ;
-                        int engineers = 0;       
+                        int engineers = 0;
                         int impostors = 0;
                         int shapeshifters = 0;
                         int noisemakers = 0;
@@ -2226,8 +2226,8 @@ namespace MoreGamemodes
                         msg += disconnectedPlayers + " players disconnected\n";
                         msg += misfiredPlayers + " misfired on crewmate\n";
                         msg += bombedPlayers + " players got bombed\n";
-                        msg += suicidePlayers + " commited suicide\n";  
-                        msg += trappedPlayers + " players trapped\n";      
+                        msg += suicidePlayers + " commited suicide\n";
+                        msg += trappedPlayers + " players trapped\n";
                         player.RpcSendMessage(msg, "Newsletter");
                         RandomItemsGamemode.instance.SendRPC(player, Items.None);
                     }
@@ -2786,7 +2786,7 @@ namespace MoreGamemodes
         public static void Postfix(TextBoxTMP __instance, [HarmonyArgument(0)] char i, ref bool __result)
         {
             if (TextBoxTMP.SymbolChars.Contains(i) || TextBoxTMP.EmailChars.Contains(i) || i == '`' || i == '$' || i == '*' || i == '[' ||
-                i == ']' || i == '{' || i == '}' || i == '|' || i == '"' || (i == '<' && __instance.AllowSymbols) || 
+                i == ']' || i == '{' || i == '}' || i == '|' || i == '"' || (i == '<' && __instance.AllowSymbols) ||
                 (i == '>' && __instance.AllowSymbols) || i > 127)
                 __result = true;
         }

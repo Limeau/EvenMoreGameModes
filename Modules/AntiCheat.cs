@@ -9,7 +9,7 @@ using AmongUs.QuickChat;
 using Object = UnityEngine.Object;
 
 // https://github.com/EnhancedNetwork/TownofHost-Enhanced/blob/main/Modules/EAC.cs
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     static class AntiCheat
     {
@@ -164,7 +164,7 @@ namespace MoreGamemodes
                         HandleCheat(pc, "PlayAnimation Rpc with visuals off");
                         return true;
                     }
-                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating) || ExileController.Instance)
+                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating) || ExileController.Instance)
                     {
                         HandleCheat(pc, "PlayAnimation Rpc during meeting");
                         return true;
@@ -187,7 +187,7 @@ namespace MoreGamemodes
                         HandleCheat(pc, "CompleteTask Rpc in lobby");
                         return true;
                     }
-                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating) || ExileController.Instance)
+                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating) || ExileController.Instance)
                     {
                         HandleCheat(pc, "Doing task during meeting");
                         return true;
@@ -251,7 +251,7 @@ namespace MoreGamemodes
                         HandleCheat(pc, "Reporting in hide n seek");
                         return true;
                     }
-                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating) || ExileController.Instance)
+                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating) || ExileController.Instance)
                     {
                         HandleCheat(pc, "Reporting during meeting");
                         return true;
@@ -267,7 +267,7 @@ namespace MoreGamemodes
                                 break;
                             }
                         }
-                        if (!bodyExists && !LobbyDeadBodies.Contains(targetId) && !RemovedBodies.Contains(targetId) && targetId != pc.PlayerId && (!MeetingHud.Instance || MeetingHud.Instance.state != MeetingHud.VoteStates.Animating))
+                        if (!bodyExists && !LobbyDeadBodies.Contains(targetId) && !RemovedBodies.Contains(targetId) && targetId != pc.PlayerId && (!MeetingHud.Instance || MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating))
                         {
                             HandleCheat(pc, "Reporting non existing body");
                             return true;
@@ -301,7 +301,7 @@ namespace MoreGamemodes
                         HandleCheat(pc, "SetScanner Rpc in lobby");
                         return true;
                     }
-                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating) || ExileController.Instance)
+                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating) || ExileController.Instance)
                     {
                         HandleCheat(pc, "SetScanner Rpc during meeting");
                         return true;
@@ -347,7 +347,7 @@ namespace MoreGamemodes
                         HandleCheat(pc, "Using platform in hide n seek");
                         return true;
                     }
-                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating) || ExileController.Instance)
+                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating) || ExileController.Instance)
                     {
                         HandleCheat(pc, "Using platform during meeting");
                         return true;
@@ -433,7 +433,7 @@ namespace MoreGamemodes
                         HandleCheat(pc, "Trying to kill while invisible");
                         return true;
                     }
-                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating) || ExileController.Instance)
+                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating) || ExileController.Instance)
                     {
                         HandleCheat(pc, "Trying to kill during meeting");
                         return true;
@@ -458,7 +458,7 @@ namespace MoreGamemodes
                             HandleCheat(pc, "Trying to protect as not guardian angel");
                         return true;
                     }
-                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating) || ExileController.Instance)
+                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating) || ExileController.Instance)
                     {
                         HandleCheat(pc, "Trying to protect during meeting");
                         return true;
@@ -475,7 +475,7 @@ namespace MoreGamemodes
                         HandleCheat(pc, "Using zipline on wrong map");
                         return true;
                     }
-                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating) || ExileController.Instance)
+                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating) || ExileController.Instance)
                     {
                         HandleCheat(pc, "Using zipline during meeting");
                         return true;
@@ -492,7 +492,7 @@ namespace MoreGamemodes
                         HandleCheat(pc, "Triggering spore on wrong map");
                         return true;
                     }
-                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating) || ExileController.Instance)
+                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating) || ExileController.Instance)
                     {
                         HandleCheat(pc, "Triggering spore during meeting");
                         return true;
@@ -536,7 +536,7 @@ namespace MoreGamemodes
                             HandleCheat(pc, "Trying to vanish as not phantom");
                         return true;
                     }
-                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating) || ExileController.Instance)
+                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating) || ExileController.Instance)
                     {
                         HandleCheat(pc, "Trying to vanish during meeting");
                         return true;
@@ -554,7 +554,7 @@ namespace MoreGamemodes
                             HandleCheat(pc, "Trying to appear as not phantom");
                         return true;
                     }
-                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating) || ExileController.Instance)
+                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating) || ExileController.Instance)
                     {
                         HandleCheat(pc, "Trying to appear during meeting");
                         return true;
@@ -581,7 +581,7 @@ namespace MoreGamemodes
                         HandleCheat(physics.myPlayer, "Venting in lobby");
                         return true;
                     }
-                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating) || ExileController.Instance)
+                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating) || ExileController.Instance)
                     {
                         HandleCheat(physics.myPlayer, "Venting during meeting");
                         return true;
@@ -603,7 +603,7 @@ namespace MoreGamemodes
                         HandleCheat(physics.myPlayer, "Climbing ladder on wrong map");
                         return true;
                     }
-                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating) || ExileController.Instance)
+                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating) || ExileController.Instance)
                     {
                         HandleCheat(physics.myPlayer, "Climbing during meeting");
                         return true;
@@ -616,7 +616,7 @@ namespace MoreGamemodes
                         HandleCheat(physics.myPlayer, "Petting in vent");
                         return true;
                     }
-                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating) || ExileController.Instance)
+                    if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating) || ExileController.Instance)
                     {
                         HandleCheat(physics.myPlayer, "Petting during meeting");
                         return true;
@@ -653,7 +653,7 @@ namespace MoreGamemodes
                         HandleCheat(netTransform.myPlayer, "Teleportation in lobby");
                         return true;
                     }
-                    if (MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating)
+                    if (MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating)
                     {
                         HandleCheat(netTransform.myPlayer, "Teleportation during meeting");
                         return true;
@@ -745,7 +745,7 @@ namespace MoreGamemodes
                     break;
                 case SystemTypes.Sabotage:
                     if (!selfRole.IsImpostor())
-                    {   
+                    {
                         if (!TimeSinceRoleChange.ContainsKey(player.PlayerId) || TimeSinceRoleChange[player.PlayerId] > 5f)
                             HandleCheat(player, "Sabotaging as crewmate");
                         return true;
@@ -842,7 +842,7 @@ namespace MoreGamemodes
                     }
                     break;
             }
-            if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating) || ExileController.Instance)
+            if ((MeetingHud.Instance && MeetingHud.Instance.state != MeetingHud.MeetingStates.Animating) || ExileController.Instance)
             {
                 if (CustomGamemode.Instance.Gamemode == Gamemodes.Zombies && systemType == SystemTypes.Ventilation) return false;
                 HandleCheat(player, "Sent UpdateSystem Rpc during meeting");
@@ -879,7 +879,7 @@ namespace MoreGamemodes
                 RemovedBodies = new List<byte>();
             }, 5f);
         }
-        
+
         public static void HandleCheat(PlayerControl pc, string reason)
         {
             if (!Options.AntiCheat.GetBool()) return;

@@ -2,7 +2,7 @@ using Hazel;
 using AmongUs.GameOptions;
 using System.Collections.Generic;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Pelican : CustomRole
     {
@@ -19,7 +19,7 @@ namespace MoreGamemodes
                 __instance.ImpostorVentButton.ToggleVisible(false);
             }
         }
-        
+
         public override void OnVotingComplete(MeetingHud __instance, MeetingHud.VoterState[] states, NetworkedPlayerInfo exiled, bool tie)
         {
             if (exiled != null && exiled.Object != null && exiled.Object == Player && BaseRole == BaseRoles.DesyncImpostor)

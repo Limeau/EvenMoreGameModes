@@ -1,5 +1,5 @@
 // https://github.com/tukasa0001/TownOfHost/blob/main/Modules/OptionItems/PresetOptionItem.cs
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class PresetOptionItem : OptionItem
     {
@@ -20,7 +20,7 @@ namespace MoreGamemodes
         public override string GetString()
         {
             return CurrentValue switch
-            {   
+            {
                 0 => Main.Preset1.Value == (string)Main.Preset1.DefaultValue ? "Preset 1" : Main.Preset1.Value,
                 1 => Main.Preset2.Value == (string)Main.Preset2.DefaultValue ? "Preset 2" : Main.Preset2.Value,
                 2 => Main.Preset3.Value == (string)Main.Preset3.DefaultValue ? "Preset 3" : Main.Preset3.Value,

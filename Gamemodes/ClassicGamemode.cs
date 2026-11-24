@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using Hazel;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class ClassicGamemode : CustomGamemode
     {

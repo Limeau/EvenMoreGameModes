@@ -1,6 +1,6 @@
 using AmongUs.GameOptions;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Phantom : CustomRole
     {

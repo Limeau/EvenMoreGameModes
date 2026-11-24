@@ -3,7 +3,7 @@ using UnityEngine;
 using TMPro;
 
 // https://github.com/EnhancedNetwork/TownofHost-Enhanced/blob/main/Patches/CredentialsPatch.cs
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(PingTracker), nameof(PingTracker.Update))]
     public static class PingShowerPatch
@@ -42,7 +42,7 @@ namespace MoreGamemodes
                 }
                 __instance.text.text += Utils.ColorString(Color.yellow, "\nFPS: " + FPSGame);
             }
-            __instance.text.text += Utils.ColorString(Color.green, "\nMore Gamemodes v" + Main.CurrentVersion);
+            __instance.text.text += Utils.ColorString(Color.green, "\nEven More Game Modes v" + Main.CurrentVersion);
         }
     }
 }

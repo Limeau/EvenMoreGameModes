@@ -6,7 +6,7 @@ using AmongUs.Data;
 
 using Object = UnityEngine.Object;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.CreatePlayer))]
     class CreatePlayerPatch
@@ -41,11 +41,11 @@ namespace MoreGamemodes
                 AmongUsClient.Instance.KickPlayer(clientData.Id, true);
                 return false;
             }
-            new LateTask(() => 
+            new LateTask(() =>
             {
                 OptionItem.SyncAllOptions();
                 if (clientData != null && clientData.Character != null)
-                    clientData.Character.RpcSendMessage("Welcome to More Gamemodes lobby! This is mod that addes new gamemodes. Type '/h gm' to see current gamemode description and '/n' to see current options. You can also type '/cm' to see other commands. Have fun playing these new gamemodes! There also new roles in classic games, you can type '/r' to see all of them! This lobby uses More Gamemodes v" + Main.CurrentVersion + "! You can play without mod installed!\n\nDiscord:https://discord.gg/jJe5kPpbFJ\nGithub:https://github.com/Rabek009/MoreGamemodes", "Welcome");
+                    clientData.Character.RpcSendMessage("Welcome to your EMGM lobby! This is mod that addes new gamemodes, the continuation of More Gamemodes. Type '/h gm' to see current gamemode description and '/n' to see current options. You can also type '/cm' to see other commands. Have fun playing these new gamemodes! There also new roles in classic games, you can type '/r' to see all of them! This lobby uses More Gamemodes v" + Main.CurrentVersion + "! You can play without mod installed!\n\nDiscord:https://discord.gg/Fwfhe28A2D\nGithub:https://github.com/Limeau/EvenEvenMoreGameModes", "Welcome");
             }, 2f, "Welcome Message");
             return true;
         }
@@ -175,7 +175,7 @@ namespace MoreGamemodes
                 {
                     pc.RpcSetName(Main.StandardNames[pc.PlayerId]);
                     if (!pc.AmOwner)
-                        pc.RpcSendMessage("Welcome to More Gamemodes lobby! This is mod that addes new gamemodes. Type '/h gm' to see current gamemode description and '/n' to see current options. You can also type '/cm' to see other commands. Have fun playing these new gamemodes! There also new roles in classic games, you can type '/r' to see all of them! This lobby uses More Gamemodes v" + Main.CurrentVersion + "! You can play without mod installed!\n\nDiscord:https://discord.gg/jJe5kPpbFJ\nGithub:https://github.com/Rabek009/MoreGamemodes", "Welcome");
+                        pc.RpcSendMessage("Welcome to More Gamemodes lobby! This is mod that addes new gamemodes. Type '/h gm' to see current gamemode description and '/n' to see current options. You can also type '/cm' to see other commands. Have fun playing these new gamemodes! There also new roles in classic games, you can type '/r' to see all of them! This lobby uses More Gamemodes v" + Main.CurrentVersion + "! You can play without mod installed!\n\nDiscord:https://discord.gg/jJe5kPpbFJ\nGithub:https://github.com/Rabek009/EvenMoreGameModes", "Welcome");
                 }
                 PlayerControl.LocalPlayer.RpcRequestVersionCheck();
             }

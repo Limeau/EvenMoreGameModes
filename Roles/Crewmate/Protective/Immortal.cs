@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Immortal : CustomRole
     {

@@ -1,6 +1,6 @@
 using HarmonyLib;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(AprilFoolsMode), nameof(AprilFoolsMode.ShouldFlipSkeld))]
     class ShouldFlipSkeldPatch

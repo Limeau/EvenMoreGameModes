@@ -2,7 +2,7 @@ using AmongUs.GameOptions;
 using Hazel;
 using UnityEngine;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class AddOn
     {
@@ -18,7 +18,7 @@ namespace MoreGamemodes
 
         public virtual void OnVotingComplete(MeetingHud __instance, MeetingHud.VoterState[] states, NetworkedPlayerInfo exiled, bool tie)
         {
-            
+
         }
 
         public virtual bool OnCastVote(MeetingHud __instance, byte suspectPlayerId)
@@ -28,7 +28,7 @@ namespace MoreGamemodes
 
         public virtual void OnIntroDestroy()
         {
-            
+
         }
 
         public virtual void OnPet()
@@ -118,7 +118,7 @@ namespace MoreGamemodes
 
         public virtual void OnAddVote(PlayerControl target)
         {
-            
+
         }
 
         public virtual bool OnUpdateSystem(ShipStatus __instance, SystemTypes systemType, MessageReader reader)
@@ -191,6 +191,6 @@ namespace MoreGamemodes
         public Color Color;
         public string AddOnName;
         public string AddOnDescription;
-        public string AddOnDescriptionLong; 
+        public string AddOnDescriptionLong;
     }
 }

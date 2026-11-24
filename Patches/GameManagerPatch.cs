@@ -3,7 +3,7 @@ using HarmonyLib;
 using Hazel;
 using System;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     //https://github.com/tukasa0001/TownOfHost/blob/main/Patches/GameManagerPatch.cs
     [HarmonyPatch(typeof(GameManager), nameof(GameManager.Serialize))]
@@ -91,7 +91,7 @@ namespace MoreGamemodes
             return false;
         }
     }
-    
+
     [HarmonyPatch(typeof(NormalGameOptionsV10), nameof(NormalGameOptionsV10.Deserialize))]
     class NormalGameOptionsV10DeserializePatch
     {

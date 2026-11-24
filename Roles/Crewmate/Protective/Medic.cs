@@ -3,7 +3,7 @@ using Hazel;
 using AmongUs.GameOptions;
 using System;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Medic : CustomRole
     {

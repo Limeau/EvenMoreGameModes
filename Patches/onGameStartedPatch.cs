@@ -4,7 +4,7 @@ using AmongUs.GameOptions;
 using UnityEngine;
 using System;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.CoStartGame))]
     class CoStartGamePatch

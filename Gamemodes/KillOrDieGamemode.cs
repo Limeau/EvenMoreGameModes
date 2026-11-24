@@ -5,7 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Data;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class KillOrDieGamemode : CustomGamemode
     {
@@ -115,7 +115,7 @@ namespace MoreGamemodes
                     pc.RpcSetColor(0);
                     foreach (var ar in PlayerControl.AllPlayerControls)
                         Main.NameColors[(pc.PlayerId, ar.PlayerId)] = Color.red;
-                }   
+                }
                 else
                 {
                     pc.RpcSetColor(1);
@@ -176,7 +176,7 @@ namespace MoreGamemodes
                     {
                         pc.RpcSetDeathReason(DeathReasons.Suicide);
                         pc.RpcMurderPlayer(pc, true);
-                    }   
+                    }
                 }
             }
             bool killerExists = false;
@@ -195,7 +195,7 @@ namespace MoreGamemodes
                     {
                         AllPlayers.Add(pc);
                         pc.RpcResetAbilityCooldown();
-                    } 
+                    }
                 }
                 var player = AllPlayers[rand.Next(0, AllPlayers.Count)];
                 SendRPC(player, true);

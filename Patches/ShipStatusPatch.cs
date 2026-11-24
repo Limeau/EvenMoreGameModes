@@ -5,7 +5,7 @@ using UnityEngine;
 using AmongUs.GameOptions;
 using System;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(ShipStatus), nameof(ShipStatus.CloseDoorsOfType))]
     class CloseDoorsPatch

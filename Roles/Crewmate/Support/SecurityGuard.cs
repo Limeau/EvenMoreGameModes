@@ -3,7 +3,7 @@ using Hazel;
 using AmongUs.GameOptions;
 using System.Collections.Generic;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class SecurityGuard : CustomRole
     {
@@ -160,7 +160,7 @@ namespace MoreGamemodes
             if (Player.Data.IsDead) return false;
             var mapId = Main.RealOptions.GetByte(ByteOptionNames.MapId);
             if (Utils.IsActive(SystemTypes.Comms) && mapId != 5) return false;
-            if (mapId is 0 or 2 or 3 or 4 && UsingCameras)  
+            if (mapId is 0 or 2 or 3 or 4 && UsingCameras)
                 return true;
             if (mapId == 1 && Vector2.Distance(Player.transform.position, new Vector2(16.22f, 5.82f)) <= 1.5f)
                 return true;

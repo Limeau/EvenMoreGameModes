@@ -6,7 +6,7 @@ using HarmonyLib;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [BepInAutoPlugin]
     [BepInProcess("Among Us.exe")]
@@ -151,7 +151,7 @@ namespace MoreGamemodes
             AntiBlackout.Reset();
             BanManager.Init();
 
-            Instance.Log.LogMessage($"Sucessfully Loaded MoreGamemodes With Version {CurrentVersion} Is Dev Version: {isDev} Is Beta Version: {isBeta}");
+            Instance.Log.LogMessage($"Sucessfully Loaded EvenMoreGameModes With Version {CurrentVersion} Is Dev Version: {isDev} Is Beta Version: {isBeta}");
             Harmony.PatchAll();
         }
 

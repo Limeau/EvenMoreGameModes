@@ -4,7 +4,7 @@ using AmongUs.GameOptions;
 using Hazel;
 using System.Linq;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class ColorWarsGamemode : CustomGamemode
     {
@@ -143,7 +143,7 @@ namespace MoreGamemodes
         public override bool OnCheckMurder(PlayerControl killer, PlayerControl target)
         {
             if (Main.Timer < Options.CwGracePeriod.GetFloat())
-                return false;         
+                return false;
             if (IsDead[killer.PlayerId] || IsDead[target.PlayerId])
                 return false;
             if (GetTeam(killer) == byte.MaxValue || GetTeam(killer) == GetTeam(target))
@@ -219,7 +219,7 @@ namespace MoreGamemodes
                         SendRPC(pc, GetTeam(pc), IsLeader(pc), false);
                         pc.RpcTeleport(PositionBeforeDeath[pc.PlayerId]);
                         pc.SyncPlayerSettings();
-                    }   
+                    }
                 }
             }
         }
@@ -354,7 +354,7 @@ namespace MoreGamemodes
             if (!Lives.ContainsKey(player.PlayerId)) return 0;
             return Lives[player.PlayerId];
         }
-        
+
         public PlayerControl GetLeader(PlayerControl player)
         {
             if (IsLeader(player)) return player;

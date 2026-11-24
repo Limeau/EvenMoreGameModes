@@ -3,7 +3,7 @@ using UnityEngine;
 using AmongUs.GameOptions;
 using Hazel;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class SpeedrunGamemode : CustomGamemode
     {
@@ -79,7 +79,7 @@ namespace MoreGamemodes
                     pc.Die(DeathReason.Exile, false);
                     MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(pc.NetId, (byte)RpcCalls.Exiled, SendOption.Reliable, -1);
                     AmongUsClient.Instance.FinishRpcImmediately(writer);
-                }       
+                }
             }
         }
 
@@ -127,7 +127,7 @@ namespace MoreGamemodes
 
         public static SpeedrunGamemode instance;
     }
-    
+
     public enum SpeedrunBodyTypes
     {
         Crewmate,

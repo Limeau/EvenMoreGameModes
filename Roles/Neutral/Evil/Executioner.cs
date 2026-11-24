@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Executioner : CustomRole
     {
@@ -76,7 +76,7 @@ namespace MoreGamemodes
             AbilityUses = -1f;
             Target = byte.MaxValue;
         }
-        
+
         public byte Target;
 
         public static OptionItem Chance;

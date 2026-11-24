@@ -3,7 +3,7 @@ using AmongUs.GameOptions;
 using Hazel;
 
 // https://github.com/tukasa0001/TownOfHost/blob/main/Modules/AntiBlackout.cs
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public static class AntiBlackout
     {

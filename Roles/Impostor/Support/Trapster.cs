@@ -4,7 +4,7 @@ using UnityEngine;
 
 using Object = UnityEngine.Object;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Trapster : CustomRole
     {

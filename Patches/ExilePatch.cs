@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     class ExileControllerWrapUpPatch
     {

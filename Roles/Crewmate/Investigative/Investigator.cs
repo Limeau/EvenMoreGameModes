@@ -3,7 +3,7 @@ using Hazel;
 using AmongUs.GameOptions;
 using System;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Investigator : CustomRole
     {
@@ -176,7 +176,7 @@ namespace MoreGamemodes
 
         public bool ShowRed(PlayerControl target)
         {
-            return target.GetRole().IsImpostor() || (target.GetRole().IsNeutralKilling() && NeutralKillingShowRed.GetBool()) || (target.GetRole().IsNeutralEvil() && NeutralEvilShowRed.GetBool()) || 
+            return target.GetRole().IsImpostor() || (target.GetRole().IsNeutralKilling() && NeutralKillingShowRed.GetBool()) || (target.GetRole().IsNeutralEvil() && NeutralEvilShowRed.GetBool()) ||
                 (target.GetRole().IsNeutralBenign() && NeutralBenignShowRed.GetBool()) || (target.GetRole().IsCrewmateKilling() && CrewmateKillingShowRed.GetBool());
         }
 

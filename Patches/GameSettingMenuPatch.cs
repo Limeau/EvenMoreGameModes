@@ -6,7 +6,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 // https://github.com/Yumenopai/TownOfHost_Y/blob/main/Patches/GameSettingMenuPatch.cs
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(GameSettingMenu))]
     public class GameSettingMenuPatch

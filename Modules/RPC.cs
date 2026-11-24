@@ -8,7 +8,7 @@ using AmongUs.GameOptions;
 
 using Object = UnityEngine.Object;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public enum CustomRPC
     {
@@ -442,7 +442,7 @@ namespace MoreGamemodes
                         player.RpcDesyncUpdateSystem(SystemTypes.Comms, 17);
                 }
             }
-                
+
         }
 
         public static void SetAbilityUses(this PlayerControl player, float uses)

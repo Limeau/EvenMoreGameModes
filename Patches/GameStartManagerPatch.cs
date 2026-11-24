@@ -5,7 +5,7 @@ using System;
 using Hazel;
 using InnerNet;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(GameStartManager), nameof(GameStartManager.Update))]
     public static class GameStartManagerUpdatePatch

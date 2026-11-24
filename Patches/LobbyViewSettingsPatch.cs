@@ -6,21 +6,21 @@ using System.Collections.Generic;
 
 using Object = UnityEngine.Object;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(LobbyViewSettingsPane))]
     public class LobbyViewPatch
     {
         private static Dictionary<TabGroup, GameObject> ViewSettingsButtons = new();
         private static float num;
-        
+
         [HarmonyPatch(nameof(LobbyViewSettingsPane.Awake))]
         [HarmonyPostfix]
         public static void AwakePostfix(LobbyViewSettingsPane __instance)
         {
             __instance.gameModeText.DestroyTranslator();
             __instance.gameModeText.text = Options.Gamemode.GetString();
-            
+
             var OverviewButton = __instance.taskTabButton.gameObject;
             OverviewButton.transform.localScale = new Vector3(Options.CurrentGamemode == Gamemodes.Classic ? 0.4f : 0.5f, 1f, 1f);
             OverviewButton.transform.localPosition += new Vector3(-1.1f, 0f, 0f);

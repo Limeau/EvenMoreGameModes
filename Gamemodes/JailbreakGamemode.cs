@@ -4,7 +4,7 @@ using System;
 using AmongUs.GameOptions;
 using Hazel;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class JailbreakGamemode : CustomGamemode
     {
@@ -230,7 +230,7 @@ namespace MoreGamemodes
                     foreach (var ar in PlayerControl.AllPlayerControls)
                         Main.NameColors[(pc.PlayerId, ar.PlayerId)] = Color.blue;
                     SendRPC_SetCurrentRecipe(pc, 1000);
-                }   
+                }
                 else
                 {
                     pc.RpcSetColor(4);
@@ -289,7 +289,7 @@ namespace MoreGamemodes
             SendRPC_SyncItemsAmount(target);
             guardian.RpcResetAbilityCooldown();
             return false;
-        } 
+        }
 
         public override bool OnCheckMurder(PlayerControl killer, PlayerControl target)
         {
@@ -363,7 +363,7 @@ namespace MoreGamemodes
             bool guardNearby = false;
             foreach (var pc in PlayerControl.AllPlayerControls)
             {
-                if (IsGuard(pc) && !IsDead[pc.PlayerId] && Vector2.Distance(pc.transform.position, killer.transform.position) <= Main.RealOptions.GetFloat(FloatOptionNames.ImpostorLightMod) * 3 
+                if (IsGuard(pc) && !IsDead[pc.PlayerId] && Vector2.Distance(pc.transform.position, killer.transform.position) <= Main.RealOptions.GetFloat(FloatOptionNames.ImpostorLightMod) * 3
                 && !PhysicsHelpers.AnythingBetween(pc.transform.position, killer.transform.position, Constants.ShadowMask, false))
                     guardNearby = true;
             }
@@ -424,7 +424,7 @@ namespace MoreGamemodes
                     SendRPC_SetPlayerType(target, JailbreakPlayerTypes.Prisoner);
                     foreach (var pc in PlayerControl.AllPlayerControls)
                         Main.NameColors[(killer.PlayerId, pc.PlayerId)] = Palette.Orange;
-                }   
+                }
                 RespawnCooldown[target.PlayerId] = Options.JbRespawnCooldown.GetFloat();
                 SendRPC_SetIsDead(target, true);
                 target.Data.MarkDirty();
@@ -597,7 +597,7 @@ namespace MoreGamemodes
                         pc.RpcShapeshift(pc, false);
                         pc.SyncPlayerSettings();
                         RespawnCooldown[pc.PlayerId] = 0f;
-                    }   
+                    }
                     continue;
                 }
                 var room = pc.GetPlainShipRoom();
@@ -632,7 +632,7 @@ namespace MoreGamemodes
                 bool guardNearby = false;
                 foreach (var ar in PlayerControl.AllPlayerControls)
                 {
-                    if (IsGuard(ar) && !IsDead[ar.PlayerId] && Vector2.Distance(ar.transform.position, pc.transform.position) <= Main.RealOptions.GetFloat(FloatOptionNames.ImpostorLightMod) * 3 
+                    if (IsGuard(ar) && !IsDead[ar.PlayerId] && Vector2.Distance(ar.transform.position, pc.transform.position) <= Main.RealOptions.GetFloat(FloatOptionNames.ImpostorLightMod) * 3
                     && !PhysicsHelpers.AnythingBetween(ar.transform.position, pc.transform.position, Constants.ShadowMask, false))
                         guardNearby = true;
                 }
@@ -693,13 +693,13 @@ namespace MoreGamemodes
                             PlayerHealth[pc.PlayerId] += Options.GuardRegeneration.GetFloat() * 3f;
                             if (PlayerHealth[pc.PlayerId] > Options.GuardHealth.GetFloat())
                                 PlayerHealth[pc.PlayerId] = Options.GuardHealth.GetFloat();
-                        } 
+                        }
                         else
                         {
                             PlayerHealth[pc.PlayerId] += Options.PrisonerRegeneration.GetFloat() * 3f;
                             if (PlayerHealth[pc.PlayerId] > Options.PrisonerHealth.GetFloat())
                                 PlayerHealth[pc.PlayerId] = Options.PrisonerHealth.GetFloat();
-                        } 
+                        }
                     }
                     else if (TimeSinceLastDamage[pc.PlayerId] >= 5f && !pc.inVent)
                     {
@@ -708,7 +708,7 @@ namespace MoreGamemodes
                             PlayerHealth[pc.PlayerId] += Options.GuardRegeneration.GetFloat();
                             if (PlayerHealth[pc.PlayerId] > Options.GuardHealth.GetFloat())
                                 PlayerHealth[pc.PlayerId] = Options.GuardHealth.GetFloat();
-                        } 
+                        }
                         else
                         {
                             PlayerHealth[pc.PlayerId] += Options.PrisonerRegeneration.GetFloat();
@@ -1028,7 +1028,7 @@ namespace MoreGamemodes
             {
                 Main.NameColors[(player.PlayerId, pc.PlayerId)] = Color.green;
                 pc.RpcReactorFlash(0.4f, Color.blue);
-            } 
+            }
         }
 
         public JailbreakGamemode()

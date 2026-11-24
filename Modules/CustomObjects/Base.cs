@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Base : CustomNetObject
     {

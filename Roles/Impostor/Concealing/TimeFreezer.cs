@@ -3,7 +3,7 @@ using Hazel;
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class TimeFreezer : CustomRole
     {

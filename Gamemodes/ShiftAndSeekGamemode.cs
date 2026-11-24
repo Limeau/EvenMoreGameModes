@@ -3,7 +3,7 @@ using UnityEngine;
 using AmongUs.GameOptions;
 using Hazel;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class ShiftAndSeekGamemode : CustomGamemode
     {
@@ -192,7 +192,7 @@ namespace MoreGamemodes
             {
                 opt.SetFloat(FloatOptionNames.ImpostorLightMod, 0f);
                 opt.SetFloat(FloatOptionNames.PlayerSpeedMod, 0f);
-            } 
+            }
             return opt;
         }
 

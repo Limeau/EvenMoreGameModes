@@ -2,7 +2,7 @@ using AmongUs.GameOptions;
 using Hazel;
 using UnityEngine;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Escapist : CustomRole
     {

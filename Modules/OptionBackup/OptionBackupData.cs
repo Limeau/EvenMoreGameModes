@@ -4,7 +4,7 @@ using System.Linq;
 using AmongUs.GameOptions;
 
 // https://github.com/tukasa0001/TownOfHost/blob/main/Modules/OptionBackup/OptionBackupData.cs
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class OptionBackupData
     {

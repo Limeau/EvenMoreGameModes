@@ -2,7 +2,7 @@ using Hazel;
 using AmongUs.GameOptions;
 using System.Collections.Generic;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class SoulCollector : CustomRole
     {

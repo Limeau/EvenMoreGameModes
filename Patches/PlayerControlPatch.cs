@@ -7,7 +7,7 @@ using System.Linq;
 using System;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CheckProtect))]
     class CheckProtectPatch
@@ -146,7 +146,7 @@ namespace MoreGamemodes
             if (!target || target.Data == null || shapeshifter.Data.IsDead || shapeshifter.Data.Disconnected) return false;
             if (target.PlayerId == 254 || target.PlayerId == 255) return false;
             if (target.IsMushroomMixupActive() && shouldAnimate) return false;
-            if (MeetingHud.Instance && MeetingHud.Instance.state is MeetingHud.VoteStates.Discussion or MeetingHud.VoteStates.NotVoted or MeetingHud.VoteStates.Voted && shouldAnimate)
+            if (MeetingHud.Instance && MeetingHud.Instance.state is MeetingHud.MeetingStates.Discussion or MeetingHud.MeetingStates.NotVoted or MeetingHud.MeetingStates.Voted && shouldAnimate)
             {
                 CustomGamemode.Instance.OnCheckShapeshiftMeeting(shapeshifter, target);
                 return false;
@@ -238,7 +238,7 @@ namespace MoreGamemodes
             AntiCheat.OnUpdate();
             if (Main.GameStarted)
             {
-                if (Options.EnableMidGameChat.GetBool() && Options.ProximityChat.GetBool() && (!MeetingHud.Instance || MeetingHud.Instance.state == MeetingHud.VoteStates.Animating) && !ExileController.Instance)
+                if (Options.EnableMidGameChat.GetBool() && Options.ProximityChat.GetBool() && (!MeetingHud.Instance || MeetingHud.Instance.state == MeetingHud.MeetingStates.Animating) && !ExileController.Instance)
                     Utils.SendSpam(false);
                 foreach (var pc in PlayerControl.AllPlayerControls)
                 {

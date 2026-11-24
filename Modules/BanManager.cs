@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     // https://github.com/tukasa0001/TownOfHost/blob/main/Modules/BanManager.cs
     public static class BanManager

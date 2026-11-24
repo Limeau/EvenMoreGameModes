@@ -1,7 +1,7 @@
 using UnityEngine;
 using Hazel;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Amnesiac : CustomRole
     {

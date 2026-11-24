@@ -5,7 +5,7 @@ using AmongUs.GameOptions;
 using Hazel;
 using System;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Hitman : CustomRole
     {

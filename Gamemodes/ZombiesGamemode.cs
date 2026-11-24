@@ -5,7 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Data;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class ZombiesGamemode : CustomGamemode
     {
@@ -336,7 +336,7 @@ namespace MoreGamemodes
                 {
                     var nearest = GetClosestZombie(player);
                     if (nearest != null)
-                        name += "\n" + Utils.ColorString(Palette.PlayerColors[2], Utils.GetArrow(player.transform.position, nearest.transform.position)); 
+                        name += "\n" + Utils.ColorString(Palette.PlayerColors[2], Utils.GetArrow(player.transform.position, nearest.transform.position));
                 }
                 else if (Options.CurrentTrackingZombiesMode == TrackingZombiesModes.Every && GetClosestZombie(player) != null)
                 {

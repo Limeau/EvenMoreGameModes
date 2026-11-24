@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class TrapArea : CustomNetObject
     {

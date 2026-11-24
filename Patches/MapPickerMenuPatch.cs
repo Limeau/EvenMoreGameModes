@@ -1,6 +1,6 @@
 using HarmonyLib;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(GameOptionsMapPicker), nameof(GameOptionsMapPicker.Initialize))]
     class GameOptionsMapPickerInitializePatch

@@ -4,7 +4,7 @@ using UnityEngine;
 using Il2CppSystem.Collections.Generic;
 using System.Linq;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
     class MeetingHudStartPatch
@@ -25,7 +25,7 @@ namespace MoreGamemodes
             {
                 if (pva == null) continue;
                 PlayerControl seer = PlayerControl.LocalPlayer;
-                PlayerControl target = Utils.GetPlayerById(pva.TargetPlayerId);
+                PlayerControl target = Utils.GetPlayerById(pva.PlayerId);
                 if (target == null) continue;
 
                 pva.NameText.text = Main.LastNotifyNames[(target.PlayerId, seer.PlayerId)];
@@ -81,32 +81,32 @@ namespace MoreGamemodes
             if (player != null && (player.IsDead || player.Disconnected))
             {
                 var voter = Utils.GetPlayerById(srcPlayerId);
-                __instance.RpcClearVote(voter.GetClientId());
+                __instance.RpcClearVote(voter.PlayerId);
                 return false;
             }
             bool canceled = !CustomGamemode.Instance.OnCastVote(__instance, srcPlayerId, suspectPlayerId);
             if (canceled)
             {
                 var voter = Utils.GetPlayerById(srcPlayerId);
-                __instance.RpcClearVote(voter.GetClientId());
+                __instance.RpcClearVote(voter.PlayerId);
             }
             return !canceled;
         }
     }
 
-    [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.UpdateButtons))]
+    [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Update))]
     class UpdateButtonsPatch
     {
         public static bool Prefix(MeetingHud __instance)
         {
-            if (PlayerControl.LocalPlayer.Data.IsDead && !__instance.amDead)
+            if (PlayerControl.LocalPlayer.Data.IsDead)
 		    {
 			    __instance.SetForegroundForDead();
 		    }
 			for (int i = 0; i < __instance.playerStates.Length; i++)
 			{
 				PlayerVoteArea playerVoteArea = __instance.playerStates[i];
-				NetworkedPlayerInfo playerById = GameData.Instance.GetPlayerById(playerVoteArea.TargetPlayerId);
+				NetworkedPlayerInfo playerById = GameData.Instance.GetPlayerById(playerVoteArea.PlayerId);
 				if (playerById == null)
 				{
 					playerVoteArea.SetDisabled();
@@ -116,7 +116,7 @@ namespace MoreGamemodes
 					bool flag = playerById.Disconnected || playerById.IsDead;
 					if (flag != playerVoteArea.AmDead)
 					{
-						playerVoteArea.SetDead(__instance.reporterId == playerById.PlayerId, flag, playerById.Role.Role == RoleTypes.GuardianAngel);
+						playerVoteArea.SetDead(true);
 						__instance.SetDirtyBit(1U);
                         if (CustomGamemode.Instance.Gamemode == Gamemodes.Classic)
                         {
@@ -149,7 +149,7 @@ namespace MoreGamemodes
 			    for (int i = 0; i < __instance.playerStates.Length; i++)
 			    {
 			    	PlayerVoteArea playerVoteArea = __instance.playerStates[i];
-                    NetworkedPlayerInfo playerInfo = GameData.Instance.GetPlayerById(playerVoteArea.TargetPlayerId);
+                    NetworkedPlayerInfo playerInfo = GameData.Instance.GetPlayerById(playerVoteArea.PlayerId);
                     int voteCount = 1;
                     if (playerInfo != null && playerInfo.GetRole() != null)
                     {
@@ -160,13 +160,10 @@ namespace MoreGamemodes
                     for (int j = 1; j <= voteCount; ++j)
                     {
                         votes.Add(new MeetingHud.VoterState
-			    	    {
-			    		    VoterId = playerVoteArea.TargetPlayerId,
-			    		    VotedForId = playerVoteArea.VotedFor
-			    	    });
+			    	    { VoterId = playerVoteArea.PlayerId, VotedForId = playerVoteArea.VotedForId });
                     }
 			    }
-			    __instance.RpcVotingComplete(votes.ToArray(), exiled, tie);
+			    __instance.RpcVotingComplete(votes.ToArray(), exiled, tie, false, byte.MaxValue);
 		    }
             return false;
         }
@@ -182,9 +179,9 @@ namespace MoreGamemodes
 		    for (int i = 0; i < __instance.playerStates.Length; i++)
 		    {
 			    PlayerVoteArea playerVoteArea = __instance.playerStates[i];
-			    if (playerVoteArea.VotedFor != 252 && playerVoteArea.VotedFor != 255 && playerVoteArea.VotedFor != 254)
+			    if (playerVoteArea.VotedForId != 252 && playerVoteArea.VotedForId != 255 && playerVoteArea.VotedForId != 254)
 			    {
-                    NetworkedPlayerInfo playerInfo = GameData.Instance.GetPlayerById(playerVoteArea.TargetPlayerId);
+                    NetworkedPlayerInfo playerInfo = GameData.Instance.GetPlayerById(playerVoteArea.PlayerId);
                     int voteCount = 1;
                     if (playerInfo != null && playerInfo.GetRole() != null)
                     {
@@ -193,13 +190,13 @@ namespace MoreGamemodes
                             voteCount += addOn.AdditionalVotes();
                     }
 				    int num;
-				    if (dictionary.TryGetValue(playerVoteArea.VotedFor, out num))
+				    if (dictionary.TryGetValue(playerVoteArea.VotedForId, out num))
                     {
-                        dictionary[playerVoteArea.VotedFor] = num + voteCount;
+                        dictionary[playerVoteArea.VotedForId] = num + voteCount;
                     }
                     else
                     {
-                        dictionary[playerVoteArea.VotedFor] = voteCount;
+                        dictionary[playerVoteArea.VotedForId] = voteCount;
                     }
 			    }
 		    }
@@ -213,7 +210,7 @@ namespace MoreGamemodes
     {
         public static void Postfix(PlayerVoteArea __instance)
         {
-            if (CustomGamemode.Instance.Gamemode == Gamemodes.Classic && __instance.TargetPlayerId == 253 && MeetingHud.Instance)
+            if (CustomGamemode.Instance.Gamemode == Gamemodes.Classic && __instance.PlayerId == 253 && MeetingHud.Instance)
             {
                 PlayerControl.LocalPlayer.GetRole().CreateMeetingButtons(MeetingHud.Instance);
                 if (PlayerControl.LocalPlayer.CanGuessInGuesserMode())

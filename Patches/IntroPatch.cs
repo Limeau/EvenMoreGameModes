@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using Il2CppSystem.Collections.Generic;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(IntroCutscene), nameof(IntroCutscene.BeginCrewmate))]
     class BeginCrewmatePatch

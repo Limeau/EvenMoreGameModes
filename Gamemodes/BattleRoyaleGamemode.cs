@@ -3,7 +3,7 @@ using UnityEngine;
 using AmongUs.GameOptions;
 using Hazel;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class BattleRoyaleGamemode : CustomGamemode
     {
@@ -72,7 +72,7 @@ namespace MoreGamemodes
         public override bool OnCheckMurder(PlayerControl killer, PlayerControl target)
         {
             if (Main.Timer < Options.BrGracePeriod.GetFloat())
-                return false;         
+                return false;
             if (GetLives(target) > 1)
             {
                 --Lives[target.PlayerId];

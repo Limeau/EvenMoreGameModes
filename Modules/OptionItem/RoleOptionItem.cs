@@ -1,4 +1,4 @@
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class RoleOptionItem : OptionItem
     {

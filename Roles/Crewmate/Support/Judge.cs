@@ -5,7 +5,7 @@ using AmongUs.GameOptions;
 
 using Object = UnityEngine.Object;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Judge : CustomRole
     {
@@ -58,7 +58,7 @@ namespace MoreGamemodes
 
         public override void OnFixedUpdate()
         {
-            if (!Player.AmOwner && !Main.IsModded[Player.PlayerId] && MeetingHud.Instance && MeetingHud.Instance.state is MeetingHud.VoteStates.NotVoted or MeetingHud.VoteStates.Voted && !AbilityUsed && !Player.Data.IsDead)
+            if (!Player.AmOwner && !Main.IsModded[Player.PlayerId] && MeetingHud.Instance && MeetingHud.Instance.state is MeetingHud.MeetingStates.NotVoted or MeetingHud.MeetingStates.Voted && !AbilityUsed && !Player.Data.IsDead)
             {
                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(Player.NetId, (byte)RpcCalls.SetRole, SendOption.None, Player.GetClientId());
                 writer.Write((ushort)RoleTypes.Shapeshifter);
@@ -86,16 +86,12 @@ namespace MoreGamemodes
 
         public override void OnCheckShapeshiftMeeting(PlayerControl target)
         {
-            if (target == Player || target.Data.IsDead || AbilityUsed || MeetingHud.Instance.state is MeetingHud.VoteStates.Discussion) return;
-            MeetingHud.Instance.RpcVotingComplete(new MeetingHud.VoterState[]{ new ()
-            {
-                VoterId = Player.PlayerId,
-                VotedForId = target.PlayerId
-            }}, target.Data, false);
+            if (target == Player || target.Data.IsDead || AbilityUsed || MeetingHud.Instance.state is MeetingHud.MeetingStates.Discussion) return;
+            MeetingHud.Instance.RpcVotingComplete(new MeetingHud.VoterState[]{ new () { VoterId = Player.PlayerId, VotedForId = target.PlayerId }}, target.Data, false, false, byte.MaxValue);
             SendRPC();
         }
 
-        
+
 
         public override int GetPlayerCount()
         {
@@ -111,15 +107,15 @@ namespace MoreGamemodes
             {
                 if (pva.transform.FindChild("MeetingButton") != null)
                     Object.Destroy(pva.transform.FindChild("MeetingButton").gameObject);
-                var player = GameData.Instance.GetPlayerById(pva.TargetPlayerId);
+                var player = GameData.Instance.GetPlayerById(pva.PlayerId);
                 var judgeRole = PlayerControl.LocalPlayer.GetRole() as Judge;
-                if (player.IsDead || player.Disconnected || player.ClientId == AmongUsClient.Instance.ClientId || Player.Data.IsDead || judgeRole.AbilityUsed || __instance.state is MeetingHud.VoteStates.Animating or MeetingHud.VoteStates.Discussion) continue;
+                if (player.IsDead || player.Disconnected || player.ClientId == AmongUsClient.Instance.ClientId || Player.Data.IsDead || judgeRole.AbilityUsed || __instance.state is MeetingHud.MeetingStates.Animating or MeetingHud.MeetingStates.Discussion) continue;
                 GameObject template = pva.Buttons.transform.Find("CancelButton").gameObject;
                 GameObject targetBox = Object.Instantiate(template, pva.transform);
                 targetBox.name = "MeetingButton";
                 targetBox.transform.localPosition = new Vector3(-0.95f, 0.03f, -1.31f);
                 SpriteRenderer renderer = targetBox.GetComponent<SpriteRenderer>();
-                renderer.sprite = Utils.LoadSprite("MoreGamemodes.Resources.JudgeIcon.png", 115f);
+                renderer.sprite = Utils.LoadSprite("EvenMoreGameModes.Resources.JudgeIcon.png", 115f);
                 PassiveButton button = targetBox.GetComponent<PassiveButton>();
                 button.OnClick.RemoveAllListeners();
                 button.OnClick.AddListener((Action)(() => PlayerControl.LocalPlayer.CmdCheckShapeshift(player.Object, true)));

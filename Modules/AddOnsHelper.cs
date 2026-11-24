@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using AmongUs.GameOptions;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     static class AddOnsHelper
     {
-        public static Dictionary<string, AddOns> CommandAddOnNames = new() 
+        public static Dictionary<string, AddOns> CommandAddOnNames = new()
         {
             {"bait", AddOns.Bait},
             {"watcher", AddOns.Watcher},
@@ -17,7 +17,7 @@ namespace MoreGamemodes
             {"lurker", AddOns.Lurker},
         };
 
-        public static Dictionary<AddOns, string> AddOnNames = new() 
+        public static Dictionary<AddOns, string> AddOnNames = new()
         {
             {AddOns.Bait, "Bait"},
             {AddOns.Watcher, "Watcher"},
@@ -28,7 +28,7 @@ namespace MoreGamemodes
             {AddOns.Lurker, "Lurker"},
         };
 
-        public static Dictionary<AddOns, string> AddOnDescriptions = new() 
+        public static Dictionary<AddOns, string> AddOnDescriptions = new()
         {
             {AddOns.Bait, "Force killer to self report"},
             {AddOns.Watcher, "See everyone's votes"},
@@ -39,7 +39,7 @@ namespace MoreGamemodes
             {AddOns.Lurker, "Your cooldown decreases in vent"},
         };
 
-        public static Dictionary<AddOns, string> AddOnDescriptionsLong = new() 
+        public static Dictionary<AddOns, string> AddOnDescriptionsLong = new()
         {
             {AddOns.Bait, "Bait (Add on): When you're killed, your killer instantly self report. Depending on options there might be report delay."},
             {AddOns.Watcher, "Watcher (Add on): You see who votes for who in meeting, like with anonymous votes turned off."},
@@ -50,7 +50,7 @@ namespace MoreGamemodes
             {AddOns.Lurker, "Lurker (Add on): Your kill cooldown continues to go down when you're in a vent. Only impostors can get this add on."},
         };
 
-        public static Dictionary<AddOns, Color> AddOnColors = new() 
+        public static Dictionary<AddOns, Color> AddOnColors = new()
         {
             {AddOns.Bait, Utils.HexToColor("#1dd7de")},
             {AddOns.Watcher, Utils.HexToColor("#521166")},

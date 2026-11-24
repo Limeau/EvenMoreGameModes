@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Parasite : CustomRole
     {
@@ -131,7 +131,7 @@ namespace MoreGamemodes
             AbilityUses = -1f;
             Cooldown = 10f;
         }
-        
+
         public float Cooldown;
 
         public static OptionItem Chance;

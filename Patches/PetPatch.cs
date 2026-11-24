@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using Hazel;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     // https://github.com/discus-sions/TownOfHost-TheOtherRoles/blob/main/Patches/PetActionsPatch.cs
     // Thanks to ImaMapleTree

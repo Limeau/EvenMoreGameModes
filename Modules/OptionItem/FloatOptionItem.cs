@@ -1,5 +1,5 @@
 // https://github.com/tukasa0001/TownOfHost/blob/main/Modules/OptionItems/FloatOptionItem.cs
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class FloatOptionItem : OptionItem
     {

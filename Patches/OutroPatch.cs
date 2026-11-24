@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using AmongUs.GameOptions;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnGameEnd))]
     class EndGamePatch
@@ -23,7 +23,7 @@ namespace MoreGamemodes
                     {
                         EndGameResult.CachedWinners.Add(new CachedPlayerData(playerInfo));
                         winners.Add(playerInfo.PlayerId);
-                    }    
+                    }
 			    }
 		    }
             string lastResult = "";
@@ -315,7 +315,7 @@ namespace MoreGamemodes
             BaseWarsGamemode.instance = null;
             FreezeTagGamemode.instance = null;
             ColorWarsGamemode.instance = null;
-            
+
             if (!AmongUsClient.Instance.AmHost) return;
             Main.StandardColors = new Dictionary<byte, byte>();
             Main.StandardNames = new Dictionary<byte, string>();
@@ -324,7 +324,7 @@ namespace MoreGamemodes
             Main.StandardPets = new Dictionary<byte, string>();
             Main.StandardVisors = new Dictionary<byte, string>();
             Main.StandardNamePlates = new Dictionary<byte, string>();
-            Main.AllShapeshifts = new Dictionary<byte, byte>();  
+            Main.AllShapeshifts = new Dictionary<byte, byte>();
             Main.LastNotifyNames = new Dictionary<(byte, byte), string>();
             Main.RealOptions.Restore(GameOptionsManager.Instance.CurrentGameOptions);
             Main.RealOptions = null;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Data;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class BombTagGamemode : CustomGamemode
     {
@@ -16,7 +16,7 @@ namespace MoreGamemodes
             else if (HasBomb(__instance.HauntTarget))
                 __instance.FilterText.text = "Has Bomb";
             else
-               __instance.FilterText.text = "Hasn't Bomb"; 
+               __instance.FilterText.text = "Hasn't Bomb";
         }
 
         public override void OnHudUpdate(HudManager __instance)
@@ -125,7 +125,7 @@ namespace MoreGamemodes
                     pc.RpcSetColor(6);
                     foreach (var ar in PlayerControl.AllPlayerControls)
                         Main.NameColors[(pc.PlayerId, ar.PlayerId)] = Color.black;
-                }   
+                }
                 else
                 {
                     pc.RpcSetColor(2);

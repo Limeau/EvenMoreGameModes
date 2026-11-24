@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AmongUs.GameOptions;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Amogus : CustomNetObject
     {

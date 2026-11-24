@@ -5,7 +5,7 @@ using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 
 // https://github.com/tukasa0001/TownOfHost/blob/main/Modules/CustomRpcSender.cs
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class CustomRpcSender
     {

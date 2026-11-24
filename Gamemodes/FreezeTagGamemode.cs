@@ -3,7 +3,7 @@ using UnityEngine;
 using AmongUs.GameOptions;
 using Hazel;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class FreezeTagGamemode : CustomGamemode
     {

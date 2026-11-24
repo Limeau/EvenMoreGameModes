@@ -7,7 +7,7 @@ using Hazel;
 
 using Object = UnityEngine.Object;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class NiceGuesser : CustomRole
     {
@@ -41,17 +41,17 @@ namespace MoreGamemodes
             {
                 if (pva.transform.FindChild("MeetingButton") != null)
                     Object.Destroy(pva.transform.FindChild("MeetingButton").gameObject);
-                var player = GameData.Instance.GetPlayerById(pva.TargetPlayerId);
+                var player = GameData.Instance.GetPlayerById(pva.PlayerId);
                 if (player.IsDead || player.Disconnected || player.ClientId == AmongUsClient.Instance.ClientId || Player.Data.IsDead || !player.GetRole().CanGetGuessed(PlayerControl.LocalPlayer, null)) continue;
                 GameObject template = pva.Buttons.transform.Find("CancelButton").gameObject;
                 GameObject targetBox = Object.Instantiate(template, pva.transform);
                 targetBox.name = "MeetingButton";
                 targetBox.transform.localPosition = new Vector3(-0.95f, 0.03f, -1.31f);
                 SpriteRenderer renderer = targetBox.GetComponent<SpriteRenderer>();
-                renderer.sprite = Utils.LoadSprite("MoreGamemodes.Resources.GuessIcon.png", 115f);
+                renderer.sprite = Utils.LoadSprite("EvenMoreGameModes.Resources.GuessIcon.png", 115f);
                 PassiveButton button = targetBox.GetComponent<PassiveButton>();
                 button.OnClick.RemoveAllListeners();
-                button.OnClick.AddListener((Action)(() => MeetingButtonOnClick(pva.TargetPlayerId, __instance)));
+                button.OnClick.AddListener((Action)(() => MeetingButtonOnClick(pva.PlayerId, __instance)));
             }
         }
 
@@ -113,7 +113,7 @@ namespace MoreGamemodes
                 tabs.Add((12, "Harmful add ons", Color.yellow));
                 tabs.Add((13, "Impostor add ons", Color.yellow));
             }
-            
+
             List<UiElement> list = new();
             for (int i = 0; i < tabs.Count; ++i)
             {
@@ -135,7 +135,7 @@ namespace MoreGamemodes
                 shapeshifterPanel.NameText.text = tabs[i].Item2;
                 Object.Destroy(shapeshifterPanel.PlayerIcon.gameObject);
                 shapeshifterPanel.LevelNumberText.text = "<font=\"VCR SDF\"><size=15>■";
-                shapeshifterPanel.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f); 
+                shapeshifterPanel.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f);
                 shapeshifterPanel.NameText.transform.localPosition = Vector3.zero;
 			    shapeshifterPanel.NameText.color = tabs[i].Item3;
 			    minigame.potentialVictims.Add(shapeshifterPanel);
@@ -179,7 +179,7 @@ namespace MoreGamemodes
                     shapeshifterPanel.NameText.text = Utils.RoleToString(role);
                     Object.Destroy(shapeshifterPanel.PlayerIcon.gameObject);
                     shapeshifterPanel.LevelNumberText.text = "<font=\"VCR SDF\"><size=15>■";
-                    shapeshifterPanel.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f); 
+                    shapeshifterPanel.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f);
                     shapeshifterPanel.NameText.transform.localPosition = Vector3.zero;
 			        shapeshifterPanel.NameText.color = Palette.ImpostorRed;
 			        minigame.potentialVictims.Add(shapeshifterPanel);
@@ -193,7 +193,7 @@ namespace MoreGamemodes
                 {
                     CustomRoles roleType = CustomRolesHelper.CommandRoleNames[role];
                     if (CustomRolesHelper.IsVanilla(roleType)) continue;
-                    if ((roleType == CustomRoles.Immortal && !Immortal.CanBeGuessed.GetBool()) || (roleType == CustomRoles.SecurityGuard && !SecurityGuard.CanBeGuessed.GetBool()) || 
+                    if ((roleType == CustomRoles.Immortal && !Immortal.CanBeGuessed.GetBool()) || (roleType == CustomRoles.SecurityGuard && !SecurityGuard.CanBeGuessed.GetBool()) ||
                         (roleType == CustomRoles.Mortician && !Mortician.CanBeGuessed.GetBool()) || (roleType == CustomRoles.Mayor && !Mayor.CanBeGuessed.GetBool())) continue;
                     if (Options.RolesChance[roleType].Id < id * 100000 || Options.RolesChance[roleType].Id >= id * 100000 + 100000) continue;
                     int num = i % 3;
@@ -213,7 +213,7 @@ namespace MoreGamemodes
                     shapeshifterPanel.NameText.text = CustomRolesHelper.RoleNames[roleType];
                     Object.Destroy(shapeshifterPanel.PlayerIcon.gameObject);
                     shapeshifterPanel.LevelNumberText.text = "<font=\"VCR SDF\"><size=15>■";
-                    shapeshifterPanel.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f); 
+                    shapeshifterPanel.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f);
                     shapeshifterPanel.NameText.transform.localPosition = Vector3.zero;
 			        shapeshifterPanel.NameText.color = CustomRolesHelper.RoleColors[roleType];
 			        minigame.potentialVictims.Add(shapeshifterPanel);
@@ -245,7 +245,7 @@ namespace MoreGamemodes
                     shapeshifterPanel.NameText.text = AddOnsHelper.AddOnNames[addOn];
                     Object.Destroy(shapeshifterPanel.PlayerIcon.gameObject);
                     shapeshifterPanel.LevelNumberText.text = "<font=\"VCR SDF\"><size=15>■";
-                    shapeshifterPanel.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f); 
+                    shapeshifterPanel.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f);
                     shapeshifterPanel.NameText.transform.localPosition = Vector3.zero;
 			        shapeshifterPanel.NameText.color = AddOnsHelper.AddOnColors[addOn];
 			        minigame.potentialVictims.Add(shapeshifterPanel);
@@ -270,7 +270,7 @@ namespace MoreGamemodes
             shapeshifterPanel2.NameText.text = "Back";
             Object.Destroy(shapeshifterPanel2.PlayerIcon.gameObject);
             shapeshifterPanel2.LevelNumberText.text = "<font=\"VCR SDF\"><size=15>■";
-            shapeshifterPanel2.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f); 
+            shapeshifterPanel2.LevelNumberText.transform.localPosition += new Vector3(0.2f, -0.02f, -10f);
             shapeshifterPanel2.NameText.transform.localPosition = Vector3.zero;
 			shapeshifterPanel2.NameText.color = Color.gray;
 			minigame.potentialVictims.Add(shapeshifterPanel2);

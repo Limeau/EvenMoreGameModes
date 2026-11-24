@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using InnerNet;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Arsonist : CustomRole
     {

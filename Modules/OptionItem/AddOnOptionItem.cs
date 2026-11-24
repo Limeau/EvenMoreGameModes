@@ -1,4 +1,4 @@
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class AddOnOptionItem : OptionItem
     {

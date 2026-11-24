@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using AmongUs.GameOptions;
 using UnityEngine;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     static class CustomRolesHelper
     {
-        public static Dictionary<string, CustomRoles> CommandRoleNames = new() 
+        public static Dictionary<string, CustomRoles> CommandRoleNames = new()
         {
             {"crewmate", CustomRoles.Crewmate},
             {"scientist", CustomRoles.Scientist},
@@ -56,7 +56,7 @@ namespace MoreGamemodes
             {"ninja", CustomRoles.Ninja},
         };
 
-        public static Dictionary<CustomRoles, string> RoleNames = new() 
+        public static Dictionary<CustomRoles, string> RoleNames = new()
         {
             {CustomRoles.Crewmate, "Crewmate"},
             {CustomRoles.Scientist, "Scientist"},
@@ -106,7 +106,7 @@ namespace MoreGamemodes
             {CustomRoles.Ninja, "Ninja"},
         };
 
-        public static Dictionary<CustomRoles, string> RoleDescriptions = new() 
+        public static Dictionary<CustomRoles, string> RoleDescriptions = new()
         {
             {CustomRoles.Crewmate, "Do your tasks"},
             {CustomRoles.Scientist, "Access vitals at any time"},
@@ -156,7 +156,7 @@ namespace MoreGamemodes
             {CustomRoles.Ninja, "Become fast and invisible"},
         };
 
-        public static Dictionary<CustomRoles, string> RoleDescriptionsLong = new() 
+        public static Dictionary<CustomRoles, string> RoleDescriptionsLong = new()
         {
             {CustomRoles.Crewmate, "Crewmate (Crewmate): Regular crewmate without any ability.<size=0>"},
             {CustomRoles.Scientist, "Scientist (Crewmate): You can use vitals from anywhere, but you have limited battery. Complete task to recharge your battery. When you complete all tasks, your battery will recharge automatically."},
@@ -206,7 +206,7 @@ namespace MoreGamemodes
             {CustomRoles.Ninja, "Ninja (Neutral): You can use vanish button to become invisible - there is no animation. During invisibility your speed is greatly increased and you don't teleport when killing. Depending on options you can vent when you're not invisible. Kill everyone to win alone."},
         };
 
-        public static Dictionary<CustomRoles, Color> RoleColors = new() 
+        public static Dictionary<CustomRoles, Color> RoleColors = new()
         {
             {CustomRoles.Crewmate, Palette.CrewmateBlue},
             {CustomRoles.Scientist, Palette.CrewmateBlue},
@@ -256,7 +256,7 @@ namespace MoreGamemodes
             {CustomRoles.Ninja, Utils.HexToColor("#802051")},
         };
 
-        public static Dictionary<CustomRoles, CustomRoleTypes> CRoleTypes = new() 
+        public static Dictionary<CustomRoles, CustomRoleTypes> CRoleTypes = new()
         {
             {CustomRoles.Crewmate, CustomRoleTypes.CrewmateVanilla},
             {CustomRoles.Scientist, CustomRoleTypes.CrewmateVanilla},

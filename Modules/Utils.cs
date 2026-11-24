@@ -15,7 +15,7 @@ using AmongUs.InnerNet.GameDataMessages;
 
 using Object = UnityEngine.Object;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public static class Utils
     {

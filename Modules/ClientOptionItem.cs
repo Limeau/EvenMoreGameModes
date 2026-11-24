@@ -4,7 +4,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 // https://github.com/tukasa0001/TownOfHost/pull/1265
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class ClientOptionItem
     {

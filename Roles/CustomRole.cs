@@ -2,7 +2,7 @@ using AmongUs.GameOptions;
 using Hazel;
 using UnityEngine;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class CustomRole
     {
@@ -21,7 +21,7 @@ namespace MoreGamemodes
 
         public virtual void OnVotingComplete(MeetingHud __instance, MeetingHud.VoterState[] states, NetworkedPlayerInfo exiled, bool tie)
         {
-            
+
         }
 
         public virtual bool OnCastVote(MeetingHud __instance, byte suspectPlayerId)
@@ -31,7 +31,7 @@ namespace MoreGamemodes
 
         public virtual void OnIntroDestroy()
         {
-            
+
         }
 
         public virtual void OnPet()
@@ -127,7 +127,7 @@ namespace MoreGamemodes
 
         public virtual void OnAddVote(PlayerControl target)
         {
-            
+
         }
 
         public virtual bool OnUpdateSystem(ShipStatus __instance, SystemTypes systemType, MessageReader reader)
@@ -295,7 +295,7 @@ namespace MoreGamemodes
             {
                 return false;
             }
-            if (IsImpostor() && target.GetRole().IsImpostor()) return false; 
+            if (IsImpostor() && target.GetRole().IsImpostor()) return false;
             if (role == CustomRoles.Crewmate && !Options.CrewmateRoleCanBeGuessed.GetBool()) return false;
             return (CustomRolesHelper.IsCrewmate(role) && !IsCrewmate()) || (CustomRolesHelper.IsImpostor(role) && !IsImpostor()) ||
                 (CustomRolesHelper.IsNeutralKilling(role) && Options.NeutralKillingCanBeGuessed.GetBool()) ||
@@ -379,7 +379,7 @@ namespace MoreGamemodes
         public CustomRoleTypes CustomRoleType;
         public string RoleName;
         public string RoleDescription;
-        public string RoleDescriptionLong; 
+        public string RoleDescriptionLong;
         public float AbilityUses;
     }
 }

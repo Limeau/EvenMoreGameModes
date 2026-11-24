@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Lurker : AddOn
     {

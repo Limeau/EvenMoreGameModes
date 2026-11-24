@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using AmongUs.GameOptions;
 using Hazel;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(LogicGameFlowNormal), nameof(LogicGameFlowNormal.CheckEndCriteria))]
     class CheckEndCriteriaNormalPatch
@@ -651,7 +651,7 @@ namespace MoreGamemodes
             return false;
         }
     }
-    
+
     [HarmonyPatch(typeof(GameManager), nameof(GameManager.CheckEndGameViaTasks))]
     class CheckEndGameViaTasksPatch
     {

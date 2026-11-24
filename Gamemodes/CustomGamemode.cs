@@ -2,7 +2,7 @@ using Il2CppSystem.Collections.Generic;
 using AmongUs.GameOptions;
 using Hazel;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class CustomGamemode
     {
@@ -39,32 +39,32 @@ namespace MoreGamemodes
 
         public virtual void OnHudUpdate(HudManager __instance)
         {
-            
+
         }
 
         public virtual void OnSetTaskText(TaskPanelBehaviour __instance, string str)
         {
-            
+
         }
 
         public virtual void OnShowNormalMap(MapBehaviour __instance)
         {
-            
+
         }
 
         public virtual void OnShowSabotageMap(MapBehaviour __instance)
         {
-            
+
         }
 
         public virtual void OnToggleHighlight(PlayerControl __instance)
         {
-            
+
         }
 
         public virtual void OnSetOutline(Vent __instance, bool mainTarget)
         {
-            
+
         }
 
         public virtual List<PlayerControl> OnBeginCrewmatePrefix(IntroCutscene __instance)
@@ -81,7 +81,7 @@ namespace MoreGamemodes
 
         public virtual void OnBeginCrewmatePostfix(IntroCutscene __instance)
         {
-            
+
         }
 
         public virtual List<PlayerControl> OnBeginImpostorPrefix(IntroCutscene __instance)
@@ -98,17 +98,17 @@ namespace MoreGamemodes
 
         public virtual void OnBeginImpostorPostfix(IntroCutscene __instance)
         {
-            
+
         }
 
         public virtual void OnShowRole(IntroCutscene __instance)
         {
-            
+
         }
 
         public virtual void OnVotingComplete(MeetingHud __instance, MeetingHud.VoterState[] states, NetworkedPlayerInfo exiled, bool tie)
         {
-            
+
         }
 
         public virtual bool OnCastVote(MeetingHud __instance, byte srcPlayerId, byte suspectPlayerId)
@@ -128,7 +128,7 @@ namespace MoreGamemodes
 
         public virtual void OnIntroDestroy()
         {
-            
+
         }
 
         public virtual void OnPet(PlayerControl pc)
@@ -139,7 +139,7 @@ namespace MoreGamemodes
         public virtual bool OnCheckProtect(PlayerControl guardian, PlayerControl target)
         {
             return true;
-        } 
+        }
 
         public virtual bool OnCheckMurder(PlayerControl killer, PlayerControl target)
         {
@@ -208,12 +208,12 @@ namespace MoreGamemodes
 
         public virtual void OnDisconnect(PlayerControl player)
         {
-            
+
         }
 
         public virtual void OnAddVote(int srcClient, int clientId)
         {
-            
+
         }
 
         public virtual bool OnClimbLadder(PlayerControl player, Ladder source, bool ladderUsed)

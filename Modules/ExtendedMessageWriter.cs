@@ -1,7 +1,7 @@
 using Hazel;
 using UnityEngine;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     static class ExtendedMessageWriter
     {

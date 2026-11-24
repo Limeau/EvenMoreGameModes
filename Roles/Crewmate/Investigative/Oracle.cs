@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Oracle : CustomRole
     {
@@ -227,7 +227,7 @@ namespace MoreGamemodes
                 else
                     selectedText += "<b>None</b>";
                 return Utils.ColorString(Color, "\n<size=1.8>Selected: " + selectedText + "</size>");
-            } 
+            }
             if (BaseRole == BaseRoles.Crewmate)
             {
                 string selectedText = "";

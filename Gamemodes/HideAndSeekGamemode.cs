@@ -3,7 +3,7 @@ using UnityEngine;
 using AmongUs.GameOptions;
 using Hazel;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class HideAndSeekGamemode : CustomGamemode
     {
@@ -36,7 +36,7 @@ namespace MoreGamemodes
             if (__instance.HauntTarget.Data.Role.Role == RoleTypes.Viper)
                 __instance.FilterText.text = "Viper";
         }
-        
+
         public override void OnHudUpdate(HudManager __instance)
         {
             var player = PlayerControl.LocalPlayer;

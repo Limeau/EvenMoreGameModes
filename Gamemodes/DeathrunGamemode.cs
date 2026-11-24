@@ -1,7 +1,7 @@
 using AmongUs.GameOptions;
 using Hazel;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class DeathrunGamemode : CustomGamemode
     {
@@ -24,7 +24,7 @@ namespace MoreGamemodes
                 }
             }, 2f);
         }
-        
+
         public override void OnHudUpdate(HudManager __instance)
         {
             var player = PlayerControl.LocalPlayer;

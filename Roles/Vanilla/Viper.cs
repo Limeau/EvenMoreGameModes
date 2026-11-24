@@ -2,7 +2,7 @@ using AmongUs.GameOptions;
 using Hazel;
 using InnerNet;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Viper : CustomRole
     {

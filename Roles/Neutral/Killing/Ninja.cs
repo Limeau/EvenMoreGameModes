@@ -3,7 +3,7 @@ using AmongUs.GameOptions;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Ninja : CustomRole
     {

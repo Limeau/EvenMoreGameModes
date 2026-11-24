@@ -1,6 +1,6 @@
 using HarmonyLib;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch(typeof(Constants), nameof(Constants.GetBroadcastVersion))]
     class GetBroadcastVersionPatch

@@ -6,7 +6,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 // https://github.com/Yumenopai/TownOfHost_Y/blob/main/Patches/GameOptionsPatch.cs
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public static class ModGameOptionsMenu
     {

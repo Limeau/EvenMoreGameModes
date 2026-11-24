@@ -2,7 +2,7 @@ using AmongUs.GameOptions;
 using UnityEngine;
 using Hazel;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Undertaker : CustomRole
     {

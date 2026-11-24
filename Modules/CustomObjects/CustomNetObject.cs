@@ -6,7 +6,7 @@ using System.Linq;
 using AmongUs.GameOptions;
 using AmongUs.InnerNet.GameDataMessages;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class CustomNetObject
     {
@@ -133,7 +133,7 @@ namespace MoreGamemodes
             if (CustomObjects.Contains(this))
                 CustomObjects.Remove(this);
         }
-        
+
         public void Hide(PlayerControl player)
         {
             if (player.AmOwner)

@@ -1,7 +1,7 @@
 using UnityEngine;
 using AmongUs.GameOptions;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Mutant : CustomRole
     {

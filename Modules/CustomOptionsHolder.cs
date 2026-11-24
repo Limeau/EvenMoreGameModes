@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 // https://github.com/tukasa0001/TownOfHost/blob/main/Modules/OptionHolder.cs
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     [HarmonyPatch]
     public static class Options
@@ -235,7 +235,7 @@ namespace MoreGamemodes
         public static OptionItem NumberOfKills;
         public static OptionItem TrackingZombiesMode;
         public static OptionItem ZoImpostorsCanVent;
-        
+
         //Jailbreak
         public static OptionItem Prisoners;
         public static OptionItem PrisonerHealth;
@@ -277,7 +277,7 @@ namespace MoreGamemodes
         public static OptionItem EscapistsCanHelpOthers;
         public static OptionItem HelpCooldown;
         public static OptionItem GivenResources;
-        
+
         //Deathrun
         public static OptionItem DrCrewmates;
         public static OptionItem DisableMeetings;
@@ -339,7 +339,7 @@ namespace MoreGamemodes
         public static OptionItem ArrowToNearestEnemyLeader;
         public static OptionItem NonTeamSpeed;
         public static OptionItem NonTeamVision;
-        
+
         //Additional gamemodes
         public static OptionItem RandomSpawn;
         public static OptionItem EnableRandomSpawn;
@@ -794,7 +794,7 @@ namespace MoreGamemodes
             VotingTime = IntegerOptionItem.Create(9002, "Voting time", new(5, 30, 1), 10, TabGroup.GamemodeSettings, false)
                 .SetGamemode(Gamemodes.PaintBattle)
                 .SetValueFormat(OptionFormat.Seconds);
-            
+
             //Kill or die
             Killer = TextOptionItem.Create(10000, "Killer", TabGroup.GamemodeSettings)
                 .SetGamemode(Gamemodes.KillOrDie)
@@ -960,7 +960,7 @@ namespace MoreGamemodes
             GivenResources = FloatOptionItem.Create(12093, "Given resources", new(10, 400, 10), 30, TabGroup.GamemodeSettings, false)
                 .SetGamemode(Gamemodes.Jailbreak)
                 .SetParent(EscapistsCanHelpOthers);
-            
+
             //Deathrun
             DrCrewmates = TextOptionItem.Create(13000, "Crewmates", TabGroup.GamemodeSettings)
                 .SetGamemode(Gamemodes.Deathrun)
@@ -977,7 +977,7 @@ namespace MoreGamemodes
                 .SetValueFormat(OptionFormat.Seconds);
             DrImpostorsCanVent = BooleanOptionItem.Create(13012, "Impostors can vent", true, TabGroup.GamemodeSettings, false)
                 .SetGamemode(Gamemodes.Deathrun);
-            
+
             //Base wars
             PlayerStats = TextOptionItem.Create(14000, "Player stats", TabGroup.GamemodeSettings)
                 .SetGamemode(Gamemodes.BaseWars)
@@ -1046,7 +1046,7 @@ namespace MoreGamemodes
                 .SetValueFormat(OptionFormat.PerLevel);
             SmallerTeamGetsLevel = BooleanOptionItem.Create(14035, "Smaller team gets level", true, TabGroup.GamemodeSettings, false)
                 .SetGamemode(Gamemodes.BaseWars);
-            
+
             //Freeze tag
             Taggers = TextOptionItem.Create(15000, "Taggers", TabGroup.GamemodeSettings)
                 .SetGamemode(Gamemodes.FreezeTag)
@@ -1074,7 +1074,7 @@ namespace MoreGamemodes
                 .SetValueFormat(OptionFormat.Seconds);
             FtShowDangerMeter = BooleanOptionItem.Create(15014, "Show danger meter", true, TabGroup.GamemodeSettings, false)
                 .SetGamemode(Gamemodes.FreezeTag);
-            
+
             //Color wars
             Leaders = TextOptionItem.Create(16000, "Leaders", TabGroup.GamemodeSettings)
                 .SetGamemode(Gamemodes.ColorWars)
@@ -1114,7 +1114,7 @@ namespace MoreGamemodes
             NonTeamVision = FloatOptionItem.Create(16017, "Non team vision", new(0.05f, 5f, 0.05f), 0.2f, TabGroup.GamemodeSettings, false)
                 .SetGamemode(Gamemodes.ColorWars)
                 .SetValueFormat(OptionFormat.Multiplier);
-            
+
             //Additional gamemodes
             RandomSpawn = TextOptionItem.Create(50000, "Random spawn", TabGroup.AdditionalGamemodes)
                 .SetColor(Color.yellow);

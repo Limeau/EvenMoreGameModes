@@ -6,7 +6,7 @@ using AmongUs.GameOptions;
 using Object = UnityEngine.Object;
 using Epic.OnlineServices.Stats;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Shaman : CustomRole
     {
@@ -120,7 +120,7 @@ namespace MoreGamemodes
 
         public override void OnFixedUpdate()
         {
-            if (!Player.AmOwner && !Main.IsModded[Player.PlayerId] && MeetingHud.Instance && MeetingHud.Instance.state is MeetingHud.VoteStates.Discussion or MeetingHud.VoteStates.NotVoted or MeetingHud.VoteStates.Voted && AbilityUses >= 1f && Target == byte.MaxValue && !Player.Data.IsDead)
+            if (!Player.AmOwner && !Main.IsModded[Player.PlayerId] && MeetingHud.Instance && MeetingHud.Instance.state is MeetingHud.MeetingStates.Discussion or MeetingHud.MeetingStates.NotVoted or MeetingHud.MeetingStates.Voted && AbilityUses >= 1f && Target == byte.MaxValue && !Player.Data.IsDead)
             {
                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(Player.NetId, (byte)RpcCalls.SetRole, SendOption.None, Player.GetClientId());
                 writer.Write((ushort)RoleTypes.Shapeshifter);
@@ -172,7 +172,7 @@ namespace MoreGamemodes
             {
                 if (pva.transform.FindChild("MeetingButton") != null)
                     Object.Destroy(pva.transform.FindChild("MeetingButton").gameObject);
-                var player = GameData.Instance.GetPlayerById(pva.TargetPlayerId);
+                var player = GameData.Instance.GetPlayerById(pva.PlayerId);
                 Shaman shamanRole = PlayerControl.LocalPlayer.GetRole() as Shaman;
                 if (player.IsDead || player.Disconnected || player.ClientId == AmongUsClient.Instance.ClientId || Player.Data.IsDead || shamanRole.AbilityUses < 1f || shamanRole.Target != byte.MaxValue) continue;
                 GameObject template = pva.Buttons.transform.Find("CancelButton").gameObject;
@@ -180,7 +180,7 @@ namespace MoreGamemodes
                 targetBox.name = "MeetingButton";
                 targetBox.transform.localPosition = new Vector3(-0.95f, 0.03f, -1.31f);
                 SpriteRenderer renderer = targetBox.GetComponent<SpriteRenderer>();
-                renderer.sprite = Utils.LoadSprite("MoreGamemodes.Resources.ShamanIcon.png", 115f);
+                renderer.sprite = Utils.LoadSprite("EvenMoreGameModes.Resources.ShamanIcon.png", 115f);
                 PassiveButton button = targetBox.GetComponent<PassiveButton>();
                 button.OnClick.RemoveAllListeners();
                 button.OnClick.AddListener((Action)(() => PlayerControl.LocalPlayer.CmdCheckShapeshift(player.Object, true)));

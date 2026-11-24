@@ -1,7 +1,7 @@
 using AmongUs.GameOptions;
 using UnityEngine;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class Camouflager : CustomRole
     {

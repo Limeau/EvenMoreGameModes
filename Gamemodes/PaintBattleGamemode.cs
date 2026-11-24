@@ -3,7 +3,7 @@ using AmongUs.GameOptions;
 using System.Collections.Generic;
 using Hazel;
 
-namespace MoreGamemodes
+namespace EvenMoreGameModes
 {
     public class PaintBattleGamemode : CustomGamemode
     {
