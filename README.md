@@ -2,9 +2,11 @@
 
 ## About the mod
 
-More Gamemodes is the Among Us mod that addes new gamemodes and roles. Only host need to have mod for it to work.<br>
-Among Us version: 17.0.0<br>
-Join to discord server: https://discord.gg/jJe5kPpbFJ
+Even More Game Modes is an Among Us mod that addes new gamemodes and roles. Only host need to have mod for it to work.<br>
+Among Us version: 19.0.0<br>
+Join the discord server: https://discord.gg/Fwfhe28A2D
+
+This is the unofficial continuation of https://github.com/Rabek009/MoreGamemodes which was last committed to in 2025.
 
 ## Hotkeys
 
