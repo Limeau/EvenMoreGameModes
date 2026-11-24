@@ -1,122 +1,128 @@
 using System;
+using System.Linq;
+using EvenMoreGameModes;
 using HarmonyLib;
-using TMPro;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-// https://github.com/tukasa0001/TownOfHost/blob/main/Patches/MainMenuManagerPatch.cs
-namespace EvenMoreGameModes
+
+[HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.Start)), HarmonyPriority(Priority.First)]
+public class MainMenuManagerStartPatch
 {
-    [HarmonyPatch(typeof(MainMenuManager))]
-    public class MainMenuManagerPatch
+    public static SpriteRenderer EMGMLogo;
+    private static void Postfix(MainMenuManager __instance)
     {
-        private static PassiveButton template;
-        private static PassiveButton discordButton;
-        private static PassiveButton gitHubButton;
-        public static SpriteRenderer MGM_Logo;
-
-        [HarmonyPatch(nameof(MainMenuManager.Start)), HarmonyPostfix, HarmonyPriority(Priority.VeryHigh)]
-        public static void StartPriorityPostfix(MainMenuManager __instance)
+        var amongUsLogo = GameObject.Find("LOGO-AU");
+        if (amongUsLogo)
         {
-            var rightpanel = __instance.gameModeButtons.transform.parent;
-            var logoObject = new GameObject("titleLogo_MGM");
-            var logoTransform = logoObject.transform;
-            MGM_Logo = logoObject.AddComponent<SpriteRenderer>();
-            logoTransform.parent = rightpanel;
-            logoTransform.localPosition = new(0f, 0.15f, 1f);
-            logoTransform.localScale *= 1.2f;
-            MGM_Logo.sprite = Utils.LoadSprite("EvenMoreGameModes.Resources.EvenMoreGameModes-Logo.png", 400f);
+            amongUsLogo.GetComponent<SpriteRenderer>().sprite = Utils.LoadSprite("EvenMoreGameModes.Resources.EvenMoreGameModes-Logo.png", 140f);
         }
 
-        [HarmonyPatch(nameof(MainMenuManager.Start)), HarmonyPostfix, HarmonyPriority(Priority.Normal)]
-        public static void StartPostfix(MainMenuManager __instance)
+        var rightpanel = __instance.gameModeButtons.transform.parent;
+        var logoObject = new GameObject("titleLogo_EMGM");
+        var logoTransform = logoObject.transform;
+
+        EMGMLogo = logoObject.AddComponent<SpriteRenderer>();
+        logoTransform.parent = rightpanel;
+        logoTransform.localPosition = new(-0.16f, 0f, 1f);
+        logoTransform.localScale *= 1.2f;
+
+        var ambience = (GameObject.Find("Ambience"));
+        if (ambience != null)
         {
-            if (template == null) template = __instance.quitButton;
-            Application.targetFrameRate = Main.UnlockFPS.Value ? 165 : 60;
-
-            if (template == null) return;
-            if (discordButton == null)
-            {
-                discordButton = CreateButton(
-                    "DiscordButton",
-                    new(-1f, -1f, 1f),
-                    new(88, 101, 242, byte.MaxValue),
-                    new(148, 161, byte.MaxValue, byte.MaxValue),
-                    () => Application.OpenURL("https://discord.gg/jJe5kPpbFJ"),
-                    "Discord");
-            }
-
-            if (gitHubButton == null)
-            {
-                gitHubButton = CreateButton(
-                    "GitHubButton",
-                    new(1f, -1f, 1f),
-                    new(153, 153, 153, byte.MaxValue),
-                    new(209, 209, 209, byte.MaxValue),
-                    () => Application.OpenURL("https://github.com/Rabek009/EvenMoreGameModes"),
-                    "GitHub");
-            }
-
-            var howToPlayButton = __instance.howToPlayButton;
-            var freeplayButton = howToPlayButton.transform.parent.Find("FreePlayButton");
-            if (freeplayButton != null)
-            {
-                freeplayButton.gameObject.SetActive(false);
-            }
-            howToPlayButton.transform.SetLocalX(0);
+            ambience.SetActive(true);
         }
 
-        private static PassiveButton CreateButton(string name, Vector3 localPosition, Color32 normalColor, Color32 hoverColor, Action action, string label, Vector2? scale = null)
+        SetButtonColor(__instance.playButton);
+        SetButtonColor(__instance.inventoryButton);
+        SetButtonColor(__instance.shopButton);
+        SetButtonColor(__instance.newsButton);
+        SetButtonColor(__instance.myAccountButton);
+        SetButtonColor(__instance.settingsButton);
+        SetButtonColor(__instance.creditsButton);
+        SetButtonColor(__instance.quitButton);
+    }
+
+    public static void SetButtonColor(PassiveButton playButton)
+    {
+        if (playButton == null) return;
+        playButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color32(22, 167, 31, byte.MaxValue);
+        playButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color32(22, 167, 31, byte.MaxValue);
+    }
+
+}
+[HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.LateUpdate))]
+class MainMenuManagerLateUpdatePatch
+{
+    private static void Postfix(MainMenuManager __instance)
+    {
+        if (!__instance || !__instance.finishStartup) return;
+        var playOnlineButton = __instance.PlayOnlineButton;
+        if (playOnlineButton != null)
         {
-            var button = Object.Instantiate(template, MGM_Logo.transform);
-            button.name = name;
-            Object.Destroy(button.GetComponent<AspectPosition>());
-            button.transform.localPosition = localPosition;
-
-            button.OnClick = new();
-            button.OnClick.AddListener(action);
-
-            var buttonText = button.transform.Find("FontPlacer/Text_TMP").GetComponent<TMP_Text>();
-            buttonText.DestroyTranslator();
-            buttonText.fontSize = buttonText.fontSizeMax = buttonText.fontSizeMin = 3.5f;
-            buttonText.enableWordWrapping = false;
-            buttonText.text = label;
-            var normalSprite = button.inactiveSprites.GetComponent<SpriteRenderer>();
-            var hoverSprite = button.activeSprites.GetComponent<SpriteRenderer>();
-            normalSprite.color = normalColor;
-            hoverSprite.color = hoverColor;
-
-            var container = buttonText.transform.parent;
-            Object.Destroy(container.GetComponent<AspectPosition>());
-            Object.Destroy(buttonText.GetComponent<AspectPosition>());
-            container.SetLocalX(0f);
-            buttonText.transform.SetLocalX(0f);
-            buttonText.horizontalAlignment = HorizontalAlignmentOptions.Center;
-
-            var buttonCollider = button.GetComponent<BoxCollider2D>();
-            if (scale.HasValue)
-                normalSprite.size = hoverSprite.size = buttonCollider.size = scale.Value;
-            buttonCollider.offset = new(0f, 0f);
-
-            return button;
+            MainMenuManagerStartPatch.SetButtonColor(__instance.PlayOnlineButton);
         }
 
-        [HarmonyPatch(nameof(MainMenuManager.OpenGameModeMenu))]
-        [HarmonyPatch(nameof(MainMenuManager.OpenOnlineMenu))]
-        [HarmonyPatch(nameof(MainMenuManager.OpenEnterCodeMenu))]
-        [HarmonyPatch(nameof(MainMenuManager.OpenAccountMenu))]
-        [HarmonyPatch(nameof(MainMenuManager.OpenCredits))]
-        [HarmonyPostfix]
-        public static void OpenMenuPostfix()
+        var playLocalButton = __instance.playLocalButton;
+        if (playLocalButton != null)
         {
-            if (MGM_Logo != null)
-                MGM_Logo.gameObject.SetActive(false);
+            MainMenuManagerStartPatch.SetButtonColor(__instance.playLocalButton);
         }
-        [HarmonyPatch(nameof(MainMenuManager.ResetScreen)), HarmonyPostfix]
-        public static void ResetScreenPostfix()
+    }
+}
+[HarmonyPatch(typeof(MainMenuManager))]
+public static class MainMenuManagerPatch
+{
+    [HarmonyPatch(nameof(MainMenuManager.Start)), HarmonyPostfix, HarmonyPriority(Priority.Normal)]
+    public static void Start_Postfix(MainMenuManager __instance)
+    {
+        Application.targetFrameRate = 165;
+        GameObject rightPanel = __instance.mainMenuUI.FindChild<Transform>("RightPanel").gameObject;
+        __instance.screenTint.enabled = false;
+        GameObject maskedBlackScreen = rightPanel.FindChild<Transform>("MaskedBlackScreen").gameObject;
+        maskedBlackScreen.GetComponent<SpriteRenderer>().enabled = false;
+        var background = GameObject.Find("BackgroundTexture");
+        if (background != null)
         {
-            if (MGM_Logo != null)
-                MGM_Logo.gameObject.SetActive(true);
+            var render = background.GetComponent<SpriteRenderer>();
+            render.flipY = true;
+            render.color = new Color(0f, 255f, 0f, 1f);
         }
+        var tint = GameObject.Find("MainUI").transform.GetChild(0).gameObject;
+        if (tint != null)
+        {
+            tint.GetComponent<SpriteRenderer>().enabled = false;
+        }
+
+        GameObject leftPanel = __instance.mainMenuUI.FindChild<Transform>("LeftPanel").gameObject;
+        leftPanel.GetComponentsInChildren<SpriteRenderer>(true).Where(r => r.name == "Shine").ToList().ForEach(r => r.enabled = false);
+        leftPanel.gameObject.FindChild<SpriteRenderer>("Divider").enabled = false;
+
+        var howToPlayButton = __instance.howToPlayButton;
+        var freeplayButton = howToPlayButton.transform.parent.Find("FreePlayButton");
+
+        if (freeplayButton != null) freeplayButton.gameObject.SetActive(false);
+
+        howToPlayButton.transform.SetLocalX(0);
+    }
+    public static T FindChild<T>(this GameObject obj, string name) where T : Object
+    {
+        string name2 = name;
+        return obj.GetComponentsInChildren<T>().First(c => c.name == name2);
+    }
+
+    [HarmonyPatch(nameof(MainMenuManager.OpenGameModeMenu))]
+    [HarmonyPatch(nameof(MainMenuManager.OpenAccountMenu))]
+    [HarmonyPatch(nameof(MainMenuManager.OpenCredits))]
+    [HarmonyPostfix]
+    public static void OpenMenu_Postfix()
+    {
+        if (MainMenuManagerStartPatch.EMGMLogo != null) MainMenuManagerStartPatch.EMGMLogo.gameObject.SetActive(false);
+    }
+
+    [HarmonyPatch(nameof(MainMenuManager.ResetScreen)), HarmonyPostfix]
+    public static void ResetScreen_Postfix()
+    {
+        if (MainMenuManagerStartPatch.EMGMLogo != null) MainMenuManagerStartPatch.EMGMLogo.gameObject.SetActive(true);
     }
 }

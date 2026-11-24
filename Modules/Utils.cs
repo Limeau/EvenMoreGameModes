@@ -394,7 +394,7 @@ namespace EvenMoreGameModes
             new LateTask(() => MeetingHud.Instance.RpcClose(), 0.2f);
         }
 
-        public static Sprite LoadSprite(string path, float pixelsPerUnit = 1f)
+        public static Sprite LoadSprite(string path, float pixelsPerUnit = 100f)
         {
             Sprite sprite = null;
             var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(path);

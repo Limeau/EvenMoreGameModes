@@ -64,7 +64,7 @@ namespace EvenMoreGameModes
         public static Dictionary<byte, float> TimeSinceLastPet;
         public static Dictionary<byte, bool> IsInvisible;
 
-        public const string CurrentVersion = "2.1.1";
+        public const string CurrentVersion = "v3.0.0";
         public bool isDev = CurrentVersion.Contains("dev");
         public bool isBeta = CurrentVersion.Contains("beta");
 
